@@ -1,6 +1,6 @@
 title: ACS Documentation
 description: Work In Progress
-remote_theme: https://github.com/JV-conseil/jekyll-theme-read-the-docs
+remote_theme: carlosperate/jekyll-theme-rtd
 
 url: https://rit-construct-makerspace.github.io/access-control-documentation
 
