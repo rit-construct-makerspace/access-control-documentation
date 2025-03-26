@@ -1,6 +1,4 @@
-# System Overview
-
-## Executive Summary
+# Executive Summary
 
 The SHED Access Control System, shortened to ACS, is a solution developed to manage access to equipment in the RIT SHED Makerspace. The system manages training content for equipment, grants access to equipment based on these trainings, and gathers statistics on makerspace usage. The system also provides many secondary tools for managing the shop, such as inventory control, event scheduling, and machine maintenance logging. The ACS system is comprised of 2 main parts;
 
