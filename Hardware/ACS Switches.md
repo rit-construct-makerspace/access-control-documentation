@@ -62,15 +62,10 @@ For power, there is a standard 115VAC outlet inside the electrical cabinet of th
 
 This implemenation allows us to retain parameters and position of the machine, as well as not constantly cycle the power on and off, while still locking out all control over the equipment. It also ensures that a card (and therefore hopefully an operator) is present at all times, while also making it easy to step away for a minute or swap operators. 
 
-<details>
-  
-  <summary>Click here to view image</summary>
+![image](https://github.com/user-attachments/assets/9f081e6a-f1bb-4b31-9dcd-9923ad0be0ef)
 
-  ![image](https://github.com/user-attachments/assets/9f081e6a-f1bb-4b31-9dcd-9923ad0be0ef)
-  
-  [Image Source - haascnc.com](https://www.haascnc.com/service/troubleshooting-and-how-to/reference-documents/robot-integration-aid---ngc.html)
-  
-</details>
+[Image Source - haascnc.com](https://www.haascnc.com/service/troubleshooting-and-how-to/reference-documents/robot-integration-aid---ngc.html)
+
 
 ### Signal Relay Switch Variant: KMX Switch
 
