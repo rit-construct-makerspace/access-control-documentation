@@ -6,7 +6,22 @@ nav_order: 3
 
 # Troubleshooting Guide
 
-## ACS denying all cards, slow to respond, or white light(s) visible on front
+## ACS is in a lockout state despite nobody putting it in lockout, or randomly suddenly enters a lockout state.
+
+**ISSUE: Unexpected Restart**
+
+When the ACS Core restarts, it defaults to a lockout state for safety purposes. This does not applied to scheduled restarts, or user-triggered restarts.
+
+**Cause 1: Power Issue**
+* A power outage would result in devices returning to a lockout state.
+* Check where power is supplied from, and see if there are any issues there.
+
+**Cause 2: Core Panic**
+* In the event of a software issue that catastrophically disables the ACS Core, it will restart itself.
+* Report what was happening when the issue happened, and a bugfix can be made.
+* Set the Core to Debug Mode and log the USB output to see what is causing the issue.
+
+## Denying all cards, slow to respond, or white light(s) visible on front
 
 **ISSUE: Network Failure**
 
@@ -40,7 +55,7 @@ If local network is fine, move to Cause 3.
 * For new devices, the most common issue is restricted networks. Contact your institution's IT department for help registering a device to the network.
 * Ensure that all configuration settings have been applied properly.
 
-## ACS stuck in lockout state, will not change state, constantly beeping/alarming
+## Stuck in lockout state, will not change state, constantly beeping/alarming
 
 **ISSUE: ACS device is in an emergency state**
 
@@ -61,5 +76,52 @@ There are some situations that disable an ACS device from operating, including t
   * All other versions: Unplug the DE9 cable, wait 5 seconds, plug cable back in.
     * If accessible, removing power input from the Switch will also work (such as unplugging the AC Power Switch).
 * Open the ACS device and check for damage to the electronics
-  * Wires unplugged or damaged, bad solder connections, etc. are common
+  * Wires unplugged or damaged, bad solder connections, etc. are common causes
   * Hardware V2.3.1 and earlier, check for damage to to removable NFC reader.
+
+## Seemingly no power, but is plugged in
+
+There are a number of safety fuses in the ACS system that may be triggered.
+
+**Cause 1: Switch Power Issue**
+* Check the Switch's lights. A red light indicates power OK.
+  * If power is OK, continue to Cause 2
+* De-energize the Switch by unplugging it and leaving it to sit for at least 60 seconds
+* Check all fuses in the Switch, replace as needed
+* Check for any hot spots on the PCB
+  * If the device has an electronic fuse, it will overheat and shut off
+* Check for any shorts, damage, etc. to the board
+
+**Cause 2: Power Input Failure**
+* Check the power source (mains voltage, computer, etc.) for operation
+* Attempt plugging in other devices that are known working, see if they get power
+* Contact your facilities department is a power issue is found
+* Contact your IT department is a power isuse related to a computer is found
+
+**Cause 3: Cable Damage**
+* Swap the ACS Core for another one, see if the issue persists
+* Attempt replacing the cable to see if it resolves the issue
+
+**Cause 4: Core Fuse Blown**
+* Core V2.3.1 and later has an electronic fuse that will perpetually shut off in a short condition
+  * Check for hot spots on the PCB, obvious shorts, damage to the PCB, etc.
+* Core V2.2.x and earlier has a one-shot mechanical fuse that will visibly break in an overcurrent incident.
+  * Check for the source of the overcurrent, such as a short-circuit.
+
+## ACS is powered and working, but doesn't activate device
+
+ **ISSUE: Switch Failure**
+
+ **Cause 1: Blown Fuse**
+ * Most mains-voltage Switches have a single-blow fuse on the output.
+ * Check the fuse for damage after removing power and giving time for the system to de-energize.
+
+**Cause 2: Damaged Cable or Core**
+* Check the green light on the Switch. It should be on when the machine is online.
+* If it is not turning on, either the cable (likely) or the Core (unlikely) is damaged.
+  * Attempt to replace the part(s) and see if it works
+
+**Cause 3: Damaged Switching Mechanism**
+* Repeated use, physical impact, or extended exposure to higher temperatures can cause a Switch to fail
+* De-energize the Switch and check the circuit board for damage, shorts, etc.
+  * A Switch fault will be very apparent, usually manifesting as burn marks or melted parts.
