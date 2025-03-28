@@ -1,10 +1,12 @@
 title: ACS Documentation
-description: Work In Progress
+description: Document for the Access Control System
 remote_theme: carlosperate/jekyll-theme-rtd
+repo_url: 'https://rit-construct-makerspace.github.io/access-control-documentation/README.html
 
-edit_on_github: true
+site_author: Jim Heaney
 github_docs_folder: false
 sticky_navigation: true
 prev_next_buttons_location: bottom
 search_enabled: true
 hljs_style: github-gist
+edit_on_github: false
