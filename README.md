@@ -5,7 +5,7 @@ This is the Access Control System Documentation Repository, which hosts a GitHub
 You can navigate to different sections using the nav bar on the left of the screen, or use the search bar at the top of the nav bar. 
 
 For development-specific information, see the relevant GitHub Repository:
-* [Documentation](https://github.com/rit-construct-makerspace/access-control-documentation) (You are here).
+* [Documentation](https://github.com/rit-construct-makerspace/access-control-documentation) (You are here)
 * [Website](https://github.com/rit-construct-makerspace/makerspace)
 * [ACS Configuration Software](https://github.com/rit-construct-makerspace/access-control-software)
 * [ACS Firmware](https://github.com/rit-construct-makerspace/access-control-firmware)
