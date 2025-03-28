@@ -2,8 +2,6 @@
 
 Below is a list of the machines and systems in which Access Control was integrated in the SHED, and notes on how that was achieved.
 
-For the sake of readability, each section has been collapsed. Click on the name of a system to expand and view the contents. 
-
 ## Electronics Benches
 
 The Electronics Benches in the SHED Makerspace already had a convenient single power strip running all equipment on the bench - soldering iron, electrical test equipment, overhead lights, etc., so a mains power switch was simply put in series with the entire bench. This also provides the benefit that the overhead lighting on the bench can be wired "always on" and serve as a visual indicator of if a bench is activated or not. 
