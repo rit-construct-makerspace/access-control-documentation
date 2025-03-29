@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Troubleshooting
 nav_order: 3
 ---
 
-# Troubleshooting Guide
+# Hardware Troubleshooting
 
 ## ACS is in a lockout state despite nobody putting it in lockout, or randomly suddenly enters a lockout state.
 
