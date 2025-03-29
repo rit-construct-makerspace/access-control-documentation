@@ -44,7 +44,7 @@ If this does not resolve it, move to Cause 2.
 * If ACS device is on ethernet, check for blinking activity light on the network jack.
 * If local network is not working, reboot access points and/or switches that the ACS device connects to
   * You may need to contact your administrator for assistance with this
-If local network is fine, move to Cause 3.
+* If local network is fine, move to Cause 3.
 
 **Cause 3: Server Failure**
 * If this is the case, ALL ACS devices and the website will be non-functional.
