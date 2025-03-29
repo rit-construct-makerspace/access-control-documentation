@@ -3,7 +3,7 @@ description: Document for the Access Control System
 remote_theme: carlosperate/jekyll-theme-rtd
 repo_url: https://rit-construct-makerspace.github.io/access-control-documentation/
 
-site_author: Jim Heaney
+site_author: Jim Heaney, RIT SHED Makerspace
 github_docs_folder: false
 sticky_navigation: true
 prev_next_buttons_location: bottom
