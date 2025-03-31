@@ -28,21 +28,6 @@ See "Website Troubleshooting" page for diagnosing issues with the Website.
   * Left menu, "Access Devices".
   * Search device name or find in list.
 
-### Accessing a Device
-
-* Check the state of the ACS Core, indicated by the light  
-  * See "Determining ACS State" above for determining the state.
-  * Only can/should continue if in "Idle" state.
-* Insert your card until it hits the stop inside the ACS Code.
-  * Card should be inserted >75% of the way.
-  * Light should immediately change.
-* If authroization granted: light will turn green and a "happy beep" will play.
-  * You are now set to use the equipment!
-  * Remove your card to end your session when complete.
-* If authorization denied: light will turn red and a "sad beep" will play.
-  * Speak to a staff member to figure out why you were denied
-  * If you have used the equipment before, odds are you forgot to sign in today.
-
 ### Changing Device State
 
 The following instructions are for staff and authorized personnel only.
