@@ -4,7 +4,11 @@ nav_order: 4
 
 # Staff Quick Reference
 
-This document is a brief reference on the operation and use of the ACS system, with reminders for staff on common use-cases.
+This document is a brief reference on the operation and use of the ACS system, with reminders for staff on common use-cases and issues.
+
+See "Hardware Troubleshooting" page for more in-depth diagnostics and uses of the ACS Hardware
+
+See "Website Troubleshooting" page for diagnosing issues with the Website.
 
 ## Hardware References
 
