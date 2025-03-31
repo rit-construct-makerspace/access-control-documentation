@@ -10,14 +10,14 @@ This document is a brief reference on the operation and use of the ACS system, w
 
 ### Determining ACS State
 * Light on front of the device will indicate device state;
-  * YELLOW: Idle mode, ready to accept card.
-  * RED: Lockout or Fault, device unavailable for use.
-  * GREEN: Unlocked or Always On, device may already be in use (if card present) or unlocked for an event or similar (if no card present).
-  * WHITE: Idle but no network, will accept cards it has previously read and cached.
-  * WHITE & Another Color Alternating: Lost network connection, but still in the other state (Lockout, AlwaysOn, Unlocked).
-  * BLUE: Device has been powered on and needs an initial state set. See "Changing Device Device State" below.
-  * PINK: Reset button is being held down, restarting in 3 seconds.
-  * RED/GREEN/BLUE Cycling: Initializing, should be in Startup mode in 30 seconds.
+  * **YELLOW**: Idle mode, ready to accept card.
+  * **RED**: Lockout or Fault, device unavailable for use.
+  * **GREEN**: Unlocked or Always On, device may already be in use (if card present) or unlocked for an event or similar (if no card present).
+  * **WHITE**: Idle but no network, will accept cards it has previously read and cached.
+  * **WHITE & Another Color Alternating**: Lost network connection, but still in the other state (Lockout, AlwaysOn, Unlocked).
+  * **BLUE**: Device has been powered on and needs an initial state set. See "Changing Device Device State" below.
+  * **PINK**: Reset button is being held down, restarting in 3 seconds.
+  * **RED/GREEN/BLUE Cycling**: Initializing, should be in Startup mode in 30 seconds.
     * If OTA update installing, may take up to 3 minutes.
     * Should only be present on power-on or if a reset is triggered. Otherwise may be a sign of a system issue to investigate.
 * ACS State can also be found in the Staff section of the website.
