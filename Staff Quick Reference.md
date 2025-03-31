@@ -37,15 +37,18 @@ The following instructions are for staff and authorized personnel only.
   * See "Determining ACS State" above for more information.
 * If changing to a less restrictive state (Lockout to Idle, Idle to AlwaysOn, etc.), insert your ID card.
   * Wait for a beep to indicate your ID has been authenticated before continuing.
-* Identify the current keyswitch position.
-  * Small silver arrow in center of switch points to current position.
-  * Right (towards button): Idle Set.
-  * Up (away from card): AlwaysOn Set.
-  * Up and Left (furthest counter-clockwise): Lockout Set.
-* Insert the key with the bump lined up with the arrow.
-* Turn the key to the position desired.
-  * If key was already in right spot, move to another spot, wait for lighting cue to change, return to position.
-* Light will update to indicate state.
+* On ACS Core Hardware Version 2.3.2 (Shlug):
+  * Identify the current keyswitch position.
+    * Small silver arrow in center of switch points to current position.
+    * Right (towards button): Idle Set.
+    * Up (away from card): AlwaysOn Set.
+    * Up and Left (furthest counter-clockwise): Lockout Set.
+  * Insert the key with the bump lined up with the arrow.
+  * Turn the key to the position desired.
+    * If key was already in right spot, move to another spot, wait for lighting cue to change, return to position.
+  * Light will update to indicate state.
+* On ACS Core Hardware Version 2.4.1:
+  * TODO
 * Remove key and ID card when complete.
 
 ## Restarting Device
