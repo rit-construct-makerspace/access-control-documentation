@@ -63,28 +63,18 @@ See "Hardware Troubleshooting" page for more in-depth diagnostics and uses.
 
 ## Website Reference
 
-### Why can't I/(user) access this device? 
+### Why can't (user) access this device? 
 
-Users:
- * Did you remember to sign in today?
- * Was the equipment in the Idle (Yellow light) state? If not it may be offline.
- * Click "Equipment" on the left side of the screen.
- * Find the piece of equipment you want to use and click on it.
- * Check that all trainings are marked as taken, and that the Mentor Training Approval is complete.
- 
-![image](https://github.com/user-attachments/assets/f834bb08-7966-49d7-ae9d-f1f776be02ff)
-
-Staff:
- * Go to "History" in the Staff section on the left side of the screen.
- * Search the user's name to find their history.
- * A log in the format "(user) failed to swipe into (machine) with error "(error type)" will be present
-  * If there is no message, indication of ACS Core network issues.
+* Go to "History" in the Staff section on the left side of the screen.
+* Search the user's name to find their history.
+* A log in the format "(user) failed to swipe into (machine) with error (error type)" will be present
+  * If there is no log, indication of ACS Core network issues.
   * "User required Welcome" : User did not sign in to the space yet today.
   * "User does not exist" : User not signed up for make.rit.edu OR keycard is not registered to their account
   * "Incomplete trainings" : User is missing one or more of the online trainings for that equipment
     * The missing training(s) will be listed in the log too.
     * If it lists no training missing, it means there is a hold on the account.
-  * "Missing Staff Approval" : User is missing in-person sign off on that equipment, but has all trainings done.
+ * "Missing Staff Approval" : User is missing in-person sign off on that equipment, but has all trainings done.
  
 ### Internal Inventory System (Staff Only)
 
