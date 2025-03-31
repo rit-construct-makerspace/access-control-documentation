@@ -11,7 +11,7 @@ You can navigate to different sections using the nav bar on the left of the scre
 For development-specific information, see the relevant GitHub Repository:
 * [Documentation](https://github.com/rit-construct-makerspace/access-control-documentation) (You are here)
 * [Website](https://github.com/rit-construct-makerspace/makerspace)
-* [ACS Configuration Software](https://github.com/rit-construct-makerspace/access-control-software)
+* [ACS Configuration Software](https://github.com/rit-construct-makerspace/access-control-configuration)
 * [ACS Firmware](https://github.com/rit-construct-makerspace/access-control-firmware)
 * [ACS Hardware](https://github.com/rit-construct-makerspace/access-control-hardware)
 
