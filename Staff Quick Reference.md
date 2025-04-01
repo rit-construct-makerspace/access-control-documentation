@@ -17,7 +17,9 @@ The other sectioncs of this reference website will contain useful information, a
 ## Determining ACS State
 * Light on front of the device will indicate device state;
   * **YELLOW SOLID**: Idle mode, ready to accept card.
-  * **YELLOW FLASHING**: Verifying card, should be approved/denied in a few seconds. If not, remove card and try again.
+  * **YELLOW FLASHING**: Verifying card, should be approved/denied in a few seconds.
+    * We also enter this lighting cue to indicate you've swapped to Idle mode when using a key, with a keycard present. Otherwise it'd be indistinguishable from Always On.
+    * If when doing a normal verification it stays in this state for an extended period, may indicate a network failure.
   * **RED SOLID**: Lockout, device unavailable for use.
   * **RED FLASHING**: Fault, device is unavailable for use due to an internal failure. See website History for more information.
   * **GREEN**: Unlocked or Always On, device may already be in use (if card present) or unlocked for an event or similar (if no card present).
