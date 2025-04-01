@@ -10,7 +10,8 @@ Need more help? Ask a member of staff!
 
 ## Determining ACS State
 Light on front of the device will indicate device state;
-* **YELLOW**: Idle mode, ready to accept card.
+* **YELLOW SOLID**: Idle mode, ready to accept card.
+* **YELLOW FLASHING**: Verifying inserted card, should be ready in a second.
 * **RED**: Lockout or Fault, device unavailable for use.
 * **GREEN**: Unlocked or Always On, device may already be in use (if card present) or unlocked for an event or similar (if no card present).
 * **ANY OTHER COLOR**: System is in a diagnostic, update, or startup state. Please notify a member of staff for more help.
