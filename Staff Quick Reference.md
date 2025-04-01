@@ -69,7 +69,7 @@ The following instructions are for staff and authorized personnel only.
   * Wait 5 seconds before plugging back in.
   * In a power-on reset, the machine will go to the "Startup" state, and need a key to return to normal operation.
 
-### Didn't find what you're looking for?
+## Didn't find what you're looking for?
 See "Hardware Troubleshooting" page for more in-depth diagnostics and uses.
 
 ## Why can't (user) access this device? 
