@@ -21,7 +21,7 @@ Light on front of the device will indicate device state;
 * Check the state of the ACS Core, indicated by the light  
   * See "Determining ACS State" above for determining the state.
   * Only can/should continue if in "Idle" state.
-* Insert your card until it hits the stop inside the ACS Code.
+* Insert your card until it hits the stop inside the ACS Core.
   * Card should be inserted >75% of the way.
   * Light should immediately change.
 * If authroization granted: light will turn green and a "happy beep" will play.
