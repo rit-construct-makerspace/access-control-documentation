@@ -4,7 +4,7 @@ This page will provide a generalized guide for identifying what ACS hardware is 
 
 Make sure to also check out the "Example ACS Deployments" page for inspiration.
 
-# ACS Configuration
+## ACS Configuration
 
 ACS hardware can be configured over USB via serial. 
 
