@@ -28,3 +28,5 @@ The Logic Connector allows for 2 Cores to operate on the same deployment, combin
 * AND/OR: Both Cores need to be activated to activate the output, but only one or the other is needed to maintain it on.
 
 Both Cores are given a OneWire temperature sensor for verifying integrity, but only one of the Cores, designated the master by being plugged into the master Core connection, has all DE-9 connections wired to the downstream Switch. Switch identifier is grounded on the secondary Core. All other pins are not connected on the secondary Core.
+
+The Logic Connector was developed for very complex equipment, like CNC machines, where we may be OK with a student running the machine but only once we've given the sign-off on their code and setup. In this situation, by giving the student access to the master Core and only staff access to the Secondary Core, students can only start the machine with a staff's help and then operate it without the staff having to be there constantly.
