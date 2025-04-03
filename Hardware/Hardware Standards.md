@@ -4,7 +4,7 @@ This page documents the standards to make ACS-compliant hardware that will be co
 
 ## Topology
 
-ACS deployments are intended to usually be comprised of a single Core and a single Switch, although with the use of active splitters or combiners multiple Cores or Switches can be combined in a deployment. See "Compatible Hardware" for information on such components. Unless otherwise states, assume documentation is referring to a standard 1:1 Core/Switch deployment. 
+ACS deployments are intended to usually be comprised of a single Core and a single Switch, although with the use of active splitters or combiners multiple Cores or Switches can be combined in a deployment. See "ACS Tertiary Components" for information on such components. Unless otherwise states, assume documentation is referring to a standard 1:1 Core/Switch deployment. 
 
 Passive combination of multiple devices in a deployment is not supported.
 
