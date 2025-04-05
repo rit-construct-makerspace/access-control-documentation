@@ -39,9 +39,9 @@ The other sectioncs of this reference website will contain useful information, a
 The following instructions are for staff and authorized personnel only.
 * Identify the current state via the light or website
   * See "Determining ACS State" above for more information.
-* If changing to a less restrictive state (Lockout to Idle, Idle to AlwaysOn, etc.), insert your ID card.
-  * Wait for a beep to indicate your ID has been authenticated before continuing.
 * On ACS Core Hardware Version 2.3.2 (Shlug):
+  * If changing to a less restrictive state (Lockout to Idle, Idle to AlwaysOn, etc.), insert your ID card.
+    * Wait for a beep to indicate your ID has been authenticated before continuing.
   * Identify the current keyswitch position.
     * Small silver arrow in center of switch points to current position.
     * Right (towards button): Idle Set.
