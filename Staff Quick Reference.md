@@ -59,12 +59,12 @@ The following instructions are for staff and authorized personnel only.
 * Preferred Method: Restart Button
   * On ACS Core Hardware V2.3.2 (Shlug):
     * Press and hold button on front for 5 seconds
-      * Light should turn purple while pressed
+      * Light should turn pink while pressed
     * When light changes colors, release
     * Startup will be complete in 30 seconds or less, and the system will return to its original state.
   * On ACS Core Hardware V2.4.1:
     * Press and hold button on back for 5 seconds
-      * All lights will turn purple when pressed
+      * All lights will turn pink when pressed
     * When light colors change, release
     * Startup will complete in 30 seconds or less, and the system will return to its original state.
 * Backup Method: Power Cycle (All Versions)
