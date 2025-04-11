@@ -4,3 +4,4 @@ theme:
   name: material
   features:
     - navigation.indexes
+    - navigation.instant
