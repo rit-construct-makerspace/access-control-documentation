@@ -1,2 +1,4 @@
+site_name: Access Control Documentation
+site_url: https://rit-construct-makerspace.github.io/access-control-documentation/
 theme:
   name: material
