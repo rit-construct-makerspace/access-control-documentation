@@ -81,7 +81,7 @@ The following parameters are accepted (Case Sensitive):
 * DebugMode: Set to 1 to turn on verbose serial outputs. **WARNING: Debug outputs can contain sensitive information!**
 * NoBuzzer: Set to 1 to turn off the buzzer.
 
-There are 2 additional parameters that can be passed that do different things;
+There are 2 additional parameters that can be passed that do different things. Pass this key with the value of "1";
 
 * Dump: Will dump the contents of the memory.
     * If the firmware was built with the configuration "DumpKey" to 0, the key will not be dumped with this.
