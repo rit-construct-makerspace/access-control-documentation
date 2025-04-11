@@ -15,7 +15,7 @@ For development-specific information, see the relevant GitHub Repository:
 * [ACS Firmware](https://github.com/rit-construct-makerspace/access-control-firmware)
 * [ACS Hardware](https://github.com/rit-construct-makerspace/access-control-hardware)
 
-The documentation uses the [Jekyll RTD Theme](https://github.com/carlosperate/jekyll-theme-rtd) by Carlos Pereira Atencio
+The documentation uses the MKDocs Material Theme.
 
 The entire Access Control System project is licensed by the Rochester Intitute of Technology SHED Makerspace under the Creative Commons CC-BY-NC-SA 4.0 License. 
 

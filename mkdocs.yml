@@ -2,6 +2,28 @@ site_name: Access Control Documentation
 site_url: https://rit-construct-makerspace.github.io/access-control-documentation/
 theme:
   name: material
+  palette:
+    - scheme: slate
+      primary: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Toggle Light Mode
+    - scheme: default
+      primary: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Toggle Dark Mode
   features:
-    - navigation.indexes
-    - navigation.instant
+    - naviation_footer
+    - navigation.tracking
+    - navigation.tabs
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+copyright: RIT SHED Makerspace

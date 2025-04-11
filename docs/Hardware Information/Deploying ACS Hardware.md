@@ -9,12 +9,13 @@ Make sure to also check out the "Example ACS Deployments" page for inspiration.
 One of the major benefits of the SHED's ACS design is the different switch types available. This enables integration with more complex equipment and in ways that are more compatible with tempermental devices.
 
 Things to Consider:
+
 * **DO NOT DISABLE EMERGENCY STOPS, LIMIT SWITCHES, INTERLOCKS, ETC**
     * Ex: If a CNC router has a wireless pendant that connects to a USB receiver, do not use a USB Hub Switch to disable this receiver if there's an emergency stop button on the pendant.
-    * Do not cut power to only a portion of the equipment's control electronics that may cause it to respond in an unknown way.
-        * Ex: Cutting power to a CNC's controller but not the motor drivers may cause the motors to act unpredictibly.
-        * The opposite is fine though, since random commands from the controller can't move unpowered motors.
-    * If your Switch wiring interfaces with a safety component like an emergency stop, it should be wired in **series**, and in a way that the Switch doesn't impact the operation of the emergency stop during normal use. 
+* Do not cut power to only a portion of the equipment's control electronics that may cause it to respond in an unknown way.
+    * Ex: Cutting power to a CNC's controller but not the motor drivers may cause the motors to act unpredictibly.
+    * The opposite is fine though, since random commands from the controller can't move unpowered motors.
+* If your Switch wiring interfaces with a safety component like an emergency stop, it should be wired in **series**, and in a way that the Switch doesn't impact the operation of the emergency stop during normal use. 
 * How does a device deal with an abrupt power-off?
     * Ex: Suddenly cutting power to a ProtoTrak controller causers it to lose all data such as coordinates, tool tables, etc.
     * Ex: Epilog lasers need to go through a 60-second startup every time you turn power back on.
@@ -28,6 +29,7 @@ Things to Consider:
     * See "ACS Switches" page for maximum ratings.
 
 When are certain switches best?
+
 * AC Power Switch
     * 115V devices with current draw <15A
     * Device responds well to being powered off abruptly (like simple power tools).
@@ -60,7 +62,9 @@ The format of the JSON is as follows:
 An improperly formatted JSON will result in an error.
 
 The following parameters are accepted (Case Sensitive):
+
 * OldPassword: **The only mandated parameter!**, The parameter protection password. Default value is "Shlug". Entering an incorrect password will result in an error and your settings not being applied.
+    * If the incorrect password is entered too many times in a row, the memory will be wiped as a safety feature.
 * NewPassword: Sets a new updated password.
 * SSID: The name of the WiFi network to connect to.
 * Password: The password to access the WiFi network. Set to "null" (case sensitive) to use no password.
@@ -76,3 +80,9 @@ The following parameters are accepted (Case Sensitive):
 * Frequency: How often, in seconds, the system sends a status update to the server. Around 10 (seconds) is default.
 * DebugMode: Set to 1 to turn on verbose serial outputs. **WARNING: Debug outputs can contain sensitive information!**
 * NoBuzzer: Set to 1 to turn off the buzzer.
+
+There are 2 additional parameters that can be passed that do different things. Pass this key with the value of "1";
+
+* Dump: Will dump the contents of the memory.
+    * If the firmware was built with the configuration "DumpKey" to 0, the key will not be dumped with this.
+* WipeAll: Will reformat the entire memory.
