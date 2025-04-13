@@ -24,5 +24,18 @@ markdown_extensions:
   - def_list
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
 
 copyright: RIT SHED Makerspace
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rit-construct-makerspace/access-control-documentation
+    - icon: fontawesome/brands/slack
+      link: https://rit-makerspace.slack.com/
+    - icon: material/email-edit
+      link: mailto:make@rit.edu
+    - icon: material/web
+      link: https://make.rit.edu

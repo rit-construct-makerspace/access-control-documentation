@@ -10,6 +10,7 @@ Need more help? Ask a member of staff!
 
 ## Determining ACS State
 Light on front of the device will indicate device state;
+
 * **YELLOW SOLID**: Idle mode, ready to accept card.
 * **YELLOW FLASHING**: Verifying inserted card, should be ready in a second.
 * **RED**: Lockout or Fault, device unavailable for use.
@@ -19,19 +20,20 @@ Light on front of the device will indicate device state;
 ## Accessing a Device
 
 * Check the state of the ACS Core, indicated by the light  
-  * See "Determining ACS State" above for determining the state.
-  * Only can/should continue if in "Idle" state.
+    * See "Determining ACS State" above for determining the state.
+    * Only can/should continue if in "Idle" state.
 * Insert your card until it hits the stop inside the ACS Core.
-  * Card should be inserted >75% of the way.
-  * Light should immediately change.
+    * Card should be inserted >75% of the way.
+    * Light should immediately change.
 * If authroization granted: light will turn green and a "happy beep" will play.
-  * You are now set to use the equipment!
-  * Remove your card to end your session when complete.
+    * You are now set to use the equipment!
+    * Remove your card to end your session when complete.
 * If authorization denied: light will turn red and a "sad beep" will play.
-  * Speak to a staff member to figure out why you were denied
-  * If you have used the equipment before, odds are you forgot to sign in today.
+    * Speak to a staff member to figure out why you were denied
+    * If you have used the equipment before, odds are you forgot to sign in today.
  
 ## Why can't I access this device?
+
 * Did you remember to sign in today?
 * Was the equipment in the Idle (Yellow light) state? If not it may be offline.
 * Click "Equipment" on the left side of the screen.
