@@ -4,6 +4,8 @@ For the end-user, a simple configuration interface has been developed. This allo
 
 ## Method 1: Configuration Software (Preferred)
 
+**[Click here to access the Access Control Configuration GitHub](https://github.com/rit-construct-makerspace/access-control-configuration)**
+
 Configuration software is currently under development, please chekc back soon!
 
 ## Method 2: JSON Configuration
