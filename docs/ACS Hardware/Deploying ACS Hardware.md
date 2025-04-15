@@ -13,12 +13,13 @@ Things to Consider:
 * **DO NOT DISABLE EMERGENCY STOPS, LIMIT SWITCHES, INTERLOCKS, ETC**
     * Ex: If a CNC router has a wireless pendant that connects to a USB receiver, do not use a USB Hub Switch to disable this receiver if there's an emergency stop button on the pendant.
 * Do not cut power to only a portion of the equipment's control electronics that may cause it to respond in an unknown way.
-    * Ex: Cutting power to a CNC's controller but not the motor drivers may cause the motors to act unpredictibly.
-    * The opposite is fine though, since random commands from the controller can't move unpowered motors.
+    * Ex: Cutting power to a CNC's controller but not the motor drivers may cause the motors to act unpredictably.
+    * The opposite is fine though, since random commands from the controller can't move un-powered motors.
 * If your Switch wiring interfaces with a safety component like an emergency stop, it should be wired in **series**, and in a way that the Switch doesn't impact the operation of the emergency stop during normal use. 
 * How does a device deal with an abrupt power-off?
-    * Ex: Suddenly cutting power to a ProtoTrak controller causers it to lose all data such as coordinates, tool tables, etc.
-    * Ex: Epilog lasers need to go through a 60-second startup every time you turn power back on.
+    * Bad Example: Suddenly cutting power to a ProtoTrak controller causers it to lose all data such as coordinates, tool tables, etc.
+    * Bad Example: Epilog lasers need to go through a 60-second startup every time you turn power back on.
+    * Good Example: Laguna power tools can work fine immediately after power is restored.
     * If a device doesn't handle power-off well, may not be ideal for an AC Power Switch, Contactor Switch, etc.
     * How does the device deal with power-on as well?
         * Ex: Laguna belt sanders have a power switch instead of a button. So, if it was left on when someone removed their card, the machine immediately starts spinning when a new card is inserted.
@@ -26,7 +27,7 @@ Things to Consider:
     * Ex: Many Laguna bandsaws have a low-current control switch on the front door, that cuts power to the motor, with easy-to-access wires for a Contactor Switch.
     * Ex: Haas CNC controllers have a screw terminal for an auxiliary emergency stop connection.
 * What's the current draw of the device (if considering interrupting power)?
-    * See "ACS Switches" page for maximum ratings.
+    * See [ACS Switches](ACS Switches.md) page for maximum ratings.
 
 When are certain switches best?
 

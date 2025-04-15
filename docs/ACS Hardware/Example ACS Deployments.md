@@ -8,7 +8,9 @@ The Electronics Benches in the SHED Makerspace already had a convenient single p
 
 ## Bernina Sewing Machine, Embroiderer, Serger
 
-All Bernina textiles equipment worked well with a simple power interruption. The machines are able to gracefully recover from being powered down and up by a mains disconnect, and it was the least invasive way to interact with the machine. 
+All Bernina textiles equipment worked well with a simple power interruption. The machines are able to gracefully recover from being powered down and up by a mains disconnect, and it was the least invasive way to interact with the machine. The only downside to this approach is it takes about 30 seconds for the machines to power up.
+
+We keep the machine's power switch always in the on position, so the machine immediately powers up when a card is inserted.
 
 This switch setup is used on Bernina models 475, 590, E16, Q20, and L460.
 
@@ -36,7 +38,13 @@ The specific RLX-equipped lathe we have in the SHED has a secondary e-stop alrea
 
 ## ProtoTrak KMX Mill
 
-The K3 KMS mill we have at the SHED has a "EURO E-STOP" DB9 connector on it, that is normally bypassed by a jumper head. This jumper head connects pin 1-6, 2-4, 3-5, and 7-8-9. Removing this plug puts the KMX into an e-stop state. In testing, we found that severing just the 2-4 connection is sufficient for triggering the e-stop state. A custom variant of the Signal Relay switch, called the KMX switch, was developed for this. The switch has a DE-9 with the matching bypass plug wiring, and a relay between pins 2 and 4. So, a DB9 cable can be used to connect this to the EURO plug, and trigger the machine in an e-stop state to turn it off. The switch pulls power from the USB port on the back of the TRAK controller. When in an e-stop error state, the controller stops the X and Y axes and the spindle from moving. The controller will also go into an obvious error state until the e-stop is rectified.
+The K3 KMS mill we have at the SHED has a "EURO E-STOP" DB9 connector on it, that is normally bypassed by a jumper head. This jumper head connects pin 1-6, 2-4, 3-5, and 7-8-9. Removing this plug puts the KMX into an e-stop state. In testing, we found that severing just the 2-4 connection is sufficient for triggering the e-stop state. A custom variant of the Signal Relay switch, called the KMX switch, was developed for this. The switch has a DE-9 with the matching bypass plug wiring, and a relay between pins 2 and 4. So, a DB9 cable can be used to connect this to the EURO plug, and trigger the machine in an e-stop state to turn it off. 
+
+The switch pulls power from the USB port on the back of the TRAK controller. When in an e-stop error state, the controller stops the X and Y axes and the spindle from moving. 
+
+The controller will go into an obvious error state until the e-stop is rectified.
+
+See [KMX Switch](ACS Switches.md#kmx-switch) for more information.
 
 ## Laguna 14CX Bandsaw
 
@@ -46,16 +54,15 @@ All of our Laguna bandsaws have motors too large to AC switch. Luckily, they all
 
 Our PowerMatic drill presses have at most a 1HP motor, so the AC Power Switch can be used to toggle them. 
 
-
 ## Jet 8x14 Horizontal Bandsaw
 
 The Jet 8x14 is a 1HP motor, so it can be interrupted with the AC Power Switch.
 
 ## SawStop Pro 3HP
 
-The Sawstop was the inspiration for developing the Contactor Switch. It is implemented as shown in the wiring diagram below. The Switch receives power any time the system is plugged in, but without a keycard the control electronics do not get power, so the devices acts like it is shut off. Removing the keycard while the saw is on will also make the system act like it was unplugged/plugged in with the blade on, and will enter an error state on next power-up. 
+The SawStop was the inspiration for developing the Contactor Switch. It is implemented as shown in the wiring diagram below. The Switch receives power any time the system is plugged in, but without a keycard the control electronics do not get power, so the devices acts like it is shut off. Removing the keycard while the saw is on will also make the system act like it was unplugged/plugged in with the blade on, and will enter an error state on next power-up. 
 
-![image](https://github.com/user-attachments/assets/13039857-7e39-4d9e-adc6-4adb568b7a55)
+![image](assets/acs sawstop wiring.png)
 
 ## Powermatic PM2800B Drill Press
 
@@ -63,7 +70,7 @@ Our PowerMatic drill presses have at most a 1HP motor, so the AC Power Switch ca
 
 ## Laguna DB126 Sander
 
-The DB126 motor is slightly too powerful for the AC Power Switch, but we still use it. A slow-blow fuse was installed so that the inrush startup current of the motor does not cause issues. In steady-state the system operartes perfectly fine.
+The DB126 motor is slightly too powerful for the AC Power Switch, but we still use it. A slow-blow fuse was installed so that the inrush startup current of the motor does not cause issues. In steady-state the system operates perfectly fine.
 
 ## Laguna 186BX Bandsaw
 
@@ -71,7 +78,7 @@ The 186BX and many other Laguna tools have a low-current limit switch in series 
 
 On our 186BX bandsaws, we also removed the 220v accessory outlet from the system. We would never use this outlet in our application, and removing it allowed for an easy way to route wires out of the pillar for interfacing with the switch. 
 
-![image](https://github.com/user-attachments/assets/a05c4ab5-3067-4b9b-ba9a-855a8b3c2337)
+![Laguna Wiring](assets/acs%20bandsaw%20wiring.png)
 
 ## Laguna SS24T Spindle Sander
 
@@ -110,6 +117,8 @@ The Panel Saw is just a normal off-the-shelf circular saw, so we simply installe
 ## Haas TM-1P CNC Mill & Haas ST-10 CNC Lathe
 
 Modern Haas machines have a secondary emergency stop on the IO PCB intended to connect to a robot cell. By connecting one channel of the Signal Relay as the NC switch, and the other as the NO switch, we can interface with this plug. There is a 120V outlet in the Haas control panel, that we can connect a USB wall wart to, to power the signal relay. 
+
+![Haas Wiring](assets/acs%20haas%20wiring.webp)
 
 [See this page on the Haas website for more details](https://www.haascnc.com/service/troubleshooting-and-how-to/reference-documents/robot-integration-aid---ngc.html)
 

@@ -4,6 +4,10 @@ This page details ACS-compatible components that are used in more complex deploy
 
 This page also includes diagnostics components used in testing and development.
 
+## Sign-In Reader
+
+The Sign-In Reader is a variant of the ACS Core, that allows users to sign in to a space. ACS Cores can optionally be configured to not unlock if the user has not signed in to the space yet today. This can be used for statistics collection, as well as to ensure users speak to members of staff before starting to work. 
+
 ## Bypass Plug
 
 The Bypass Plug allows for a Switch to be toggled without a Core, instead using a physical toggle switch to connect the Switch's 5v out to the ACS Signal line.
@@ -23,6 +27,7 @@ The identifier pin is grounded, to indicate to the Core that the switch type can
 ## Logic Connector
 
 The Logic Connector allows for 2 Cores to operate on the same deployment, combining their signals in one of 3 logical expressions;
+
 * OR: Either of the Cores needs to be activated to activate the output.
 * AND: Both Cores need to be activated to activate the output.
 * AND/OR: Both Cores need to be activated to activate the output, but only one or the other is needed to maintain it on.

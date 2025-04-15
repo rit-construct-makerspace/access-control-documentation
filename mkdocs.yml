@@ -1,19 +1,21 @@
 site_name: Access Control Documentation
 theme:
+  logo: assets/rit_hor.svg
+  favicon: assets/tiger-icon.svg
   name: material
   palette:
-    - scheme: slate
-      primary: deep orange
-      toggle:
-        icon: material/weather-sunny
-        name: Toggle Light Mode
     - scheme: default
       primary: deep orange
       toggle:
         icon: material/weather-night
         name: Toggle Dark Mode
+    - scheme: slate
+      primary: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Toggle Light Mode
   features:
-    - naviation_footer
+    - navigation_footer
     - navigation.tracking
     - navigation.tabs
 
@@ -26,6 +28,12 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tabbed:
       alternate_style: true
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - toc:
+      permalink: "#"
+
 
 copyright: RIT SHED Makerspace
 
