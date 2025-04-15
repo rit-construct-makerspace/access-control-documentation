@@ -8,9 +8,7 @@ Welcome to the documentation page for the SHED Makerspace Access Control System.
 
 This website is dedicated to documenting the Access Control System our shop has developed, to make managing our shop and resources easier and safer.
 
-This project is open-source, and source content can be found on the [makerspace GitHub page](https://github.com/rit-construct-makerspace).
-
-
+This project is open-source, and source content can be found on the [SHED makerspace GitHub page](https://github.com/rit-construct-makerspace).
 
 ## Executive Summary
 

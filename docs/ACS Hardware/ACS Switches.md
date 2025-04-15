@@ -6,7 +6,7 @@ The Switch is the portion of an ACS deployment that is responsible for directly 
 
 Switches are also generally the component responsible for powering an ACS deployment, harvesting some power from whatever it is switching on/off in most applications.
 
-An example is given of each below Switch, but see "Example ACS Deployments" for more exmaple of deploying these Switches.
+An example is given of each below Switch, but see "Example ACS Deployments" for more example of deploying these Switches.
 
 For generalized information on selecting a Switch for your machine, see the page "Deploying ACS Hardware".
 
@@ -32,7 +32,7 @@ We mounted the Power Switch on the column of the drill press.
 
 # Contactor Switch
 
-The Contactor Switch is intended for interrupting power on larger pieces of mains-powered equipment. Instead of switchng power directly, the Contactor Switch is meant to interface with a contactor that then switches power for the equipment. This can be a contactor installed specifically for ACS, but in most applications it is interfacing with a contactor that already exists in the equipment's control circuitry.
+The Contactor Switch is intended for interrupting power on larger pieces of mains-powered equipment. Instead of switching power directly, the Contactor Switch is meant to interface with a contactor that then switches power for the equipment. This can be a contactor installed specifically for ACS, but in most applications it is interfacing with a contactor that already exists in the equipment's control circuitry.
 
 The Contactor Switch has 2 inputs and 2 outputs; an input live and neutral, and an output live and neutral. The live and a neutral inputs supply the internal regulator, and when the Switch is activated, the input live is connected to the output live connection. The input neutral and output neutral are always connected, and is there for ease of wiring.
 
@@ -54,7 +54,7 @@ The SawStop logical circuitry is powered by the input power wired from L1 throug
 
 The Signal Relay Switch is used to interrupt low-current signals in a wide variety of control loops. The Signal Relay can be used in more applications than a Contactor Switch, since it does not draw power from the connected circuit, thus not interfering with weak digital logic signals. Signal Relays Switches are commonly installed in series with door switches, emergency stops, cycle start buttons, etc., to disable a machine that isn't feasible to cut power to directly. 
 
-As a result of the requirement to not draw power from the connected system, the Signal Relay Switch needs to be indepdndently powered. 5v is supplied via a USB-B connector on the board from any available source. 
+As a result of the requirement to not draw power from the connected system, the Signal Relay Switch needs to be independently powered. 5v is supplied via a USB-B connector on the board from any available source. 
 
 The Signal Relay Switch offers 2 independent but synchronized control channels, each with a normally open and normally closed contact. Each channel is rated for resistive loads of 2A at 30VDC or 0.5A at 125VAC.
 
@@ -68,7 +68,7 @@ All HAAS machines produced after ~2015 have considerations for adding a robotic 
 
 For power, there is a standard 115VAC outlet inside the electrical cabinet of the TM-1P that we plugged a USB wall wart into. This outlet is energized any time the machine power is on. 
 
-This implemenation allows us to retain parameters and position of the machine, as well as not constantly cycle the power on and off, while still locking out all control over the equipment. It also ensures that a card (and therefore hopefully an operator) is present at all times, while also making it easy to step away for a minute or swap operators. 
+This implementation allows us to retain parameters and position of the machine, as well as not constantly cycle the power on and off, while still locking out all control over the equipment. It also ensures that a card (and therefore hopefully an operator) is present at all times, while also making it easy to step away for a minute or swap operators. 
 
 ![Haas Wiring](assets/acs%20haas%20wiring.webp)
 

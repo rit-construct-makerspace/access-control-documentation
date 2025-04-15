@@ -4,7 +4,7 @@ This page documents the standards to make ACS-compliant hardware that will be co
 
 ## Topology
 
-ACS deployments are intended to usually be comprised of a single Core and a single Switch, although with the use of active splitters or combiners multiple Cores or Switches can be combined in a deployment. See "ACS Tertiary Components" for information on such components. Unless otherwise states, assume documentation is referring to a standard 1:1 Core/Switch deployment. 
+ACS deployments are intended to usually be comprised of a single Core and a single Switch, although with the use of active splitters or combiners multiple Cores or Switches can be combined in a deployment. See [ACS Tertiary Components](ACS Tertiary Components.md) for information on such components. Unless otherwise states, assume documentation is referring to a standard Core+Switch deployment. 
 
 Passive combination of multiple devices in a deployment is not supported.
 
@@ -51,7 +51,7 @@ Devices that go between a single Switch and the Core should pass this signal thr
 
 ### Interrupt
 
-To allow Switches or other devices to notify the Core of something notable, an interrupt pin is implemented. There's no standard for what the interrupt means. Devices that do not otherwise communicate with the Core must clear the interrupt within 1 second. Devbices that communicate with the Core can assert the interrupt until acknowledged. 
+To allow Switches or other devices to notify the Core of something notable, an interrupt pin is implemented. There's no standard for what the interrupt means. Devices that do not otherwise communicate with the Core must clear the interrupt within 1 second. Devices that communicate with the Core can assert the interrupt until acknowledged. 
 
 The interrupt pin is pulled to 3.3v by the Core, and the other device(s) can ground it to trigger the interrupt. This allows for different logic levels, as well as multiple devices to interrupt at once without bus contention.
 

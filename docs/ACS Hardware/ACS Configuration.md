@@ -12,7 +12,6 @@ Configuration software is currently under development, please check back soon!
 
 JSON configuration works with any USB-enabled computer, running any operating system that supports CDC USB Devices. 
 
-
 To configure the ACS Core this way, you first need a serial terminal. If you already know how to use a serial terminal and/or have a preferred program, you can use that instead.
 
 **Suggested: Arduino Serial Terminal**
