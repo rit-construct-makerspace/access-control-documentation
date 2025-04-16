@@ -33,6 +33,8 @@ ACS Signal is the standard signal that the Core uses to drive the connected Swit
 
 All ACS components implement a Dallas DS18B20Z or similar OneWire temperature sensor. This is used both for monitoring temperature as well as to assign each component a globally unique ID number. By periodically polling these OneWire IDs, system integrity can be monitored. The Core is the only OneWire master allowed on the bus.
 
+In future production runs of Switches and Cores, a plaintext identifier of the component may be written to the EEPROM of the DS18B20Z for easier identification.
+
 Any device that splits the ACS connection must route OneWire to all connections.
 
 ### System Power & Ground
@@ -59,7 +61,7 @@ Like OneWire, the interrupt pin should go to all connected devices.
 
 ### RS485
 
-To allow more complex communication between the Core and Switches, a half-duplex RS485 interface is implemented. The Core uses a MAX13487 auto-switching and slew-rate-limited transceiver. The other device(s) should implement a compatible transceiver. 
+To allow more complex communication between the Core and other devices in a deployment, a half-duplex RS485 interface is implemented. The Core uses a MAX13487 auto-switching and slew-rate-limited transceiver. The other device(s) should implement a compatible transceiver. 
 
 Devices that split the ACS connection should route the RS485 pins to all devices.
 
