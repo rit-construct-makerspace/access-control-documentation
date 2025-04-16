@@ -2,9 +2,9 @@
 
 This guide will show you everything you need to do to use a piece of equipment in the SHED makerspace.
 
-# Getting Access to Equipment
+## Getting Access to Equipment
 
-## 1. Create Your Makerspace Account.
+### 1. Create Your Makerspace Account
 
 * Before using any equipment in the makerspace, you must create an account at make.rit.edu.
 * Make sure to complete the [Shop Safety Training](https://rit.sabacloud.com/Saba/Web_spf/NA3P1PRD0049/common/leclassview/dowbt-0000146117) mandated by RIT Health & Safety before using any makerspace equipment.
@@ -13,7 +13,7 @@ This guide will show you everything you need to do to use a piece of equipment i
 
 ![Image](assets/training%20image%20rit%20id%20not%20registered%20(1).png)
 
-## 2. Complete Online Trainings
+### 2. Complete Online Trainings
 
 ![Image](assets/acs%20machine%20training.png){ align=right }
 
@@ -23,7 +23,7 @@ This guide will show you everything you need to do to use a piece of equipment i
 * The trainings required to use this equipment will be listed. Click on the training to complete it.
 * The Standard Operating Procedure can also be found here, and is useful for completing the training.
 
-## 3. Staff Approval
+### 3. Staff Approval
 
 Most equipment in the shop requires approval by staff before using. Once you have completed all online trainings, stop by and talk to a member of staff to complete this in-person practical, it generally takes under 10 minutes. 
 
@@ -32,9 +32,9 @@ Most equipment in the shop requires approval by staff before using. Once you hav
 
 **If the staff give you the OK, you are now set to use the equipment whenever you want!**
 
-# Using ACS-Equipped Equipment
+## Using ACS-Equipped Equipment
 
-## 1. Sign In to the Space
+### 1. Sign In to the Space
 
 * Before using equipment in any space, you need to sign in.
 * Tap your ID at the front desk to sign in. 
@@ -44,15 +44,19 @@ Most equipment in the shop requires approval by staff before using. Once you hav
 
 ![Image](assets/training%20signing%20in.png)
 
-## 2. Check if the machine you want is available
+### 2. Check if the machine you want is available
 
 * If a device is available but not in use, the light on the front will be **YELLOW**.
     * See [User Quick Reference](User Quick Reference.md#determining-acs-state) to determine machine state based on light color.
 * Insert your ID until it stops against the internal stopper
 * The light should immediately start flashing, and then turn **GREEN** if you are approved to use the machine.
     * Any other color, see staff for assistance.
+
+### 3. Ending Session
 * When you remove your ID, the machine will immediately return to its locked state.
-    * Be careful removing your ID on equipment like mills or sewing machines, where the sudden shutdown may cause issues with your project or lose your settings.
+    * Be careful removing your ID on equipment like mills or sewing machines, where the sudden shutdown may cause issues with your projector lose your settings.
+* **Make sure to clean up after yourself once done!**
+    * Failure to clean up may result in having a hold placed on your account, restricting future equipment access.
 
 ![Image](assets/training%20acs%20idle.jpg)
 ![Image](assets/training%20acs%20unlocked.jpg)

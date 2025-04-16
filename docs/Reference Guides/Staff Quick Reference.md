@@ -1,7 +1,3 @@
----
-nav_order: 4
----
-
 # Staff Quick Reference
 
 This document is a brief reference on the operation and use of the ACS system, with reminders for staff on common use-cases and issues.
