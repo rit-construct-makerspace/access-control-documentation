@@ -8,7 +8,7 @@ This page has helpful reminders for makerspace users on the Access Control Syste
 
 Need more help? Ask a member of staff!
 
-## Determining ACS State
+# Determining ACS State
 Light on front of the device will indicate device state;
 
 * **YELLOW SOLID**: Idle mode, ready to accept card.
@@ -17,7 +17,7 @@ Light on front of the device will indicate device state;
 * **GREEN**: Unlocked or Always On, device may already be in use (if card present) or unlocked for an event or similar (if no card present).
 * **ANY OTHER COLOR**: System is in a diagnostic, update, or startup state. Please notify a member of staff for more help.
 
-## Accessing a Device
+# Accessing a Device
 
 * Check the state of the ACS Core, indicated by the light  
     * See "Determining ACS State" above for determining the state.
@@ -32,7 +32,7 @@ Light on front of the device will indicate device state;
     * Speak to a staff member to figure out why you were denied
     * If you have used the equipment before, odds are you forgot to sign in today.
  
-## Why can't I access this device?
+# Why can't I access this device?
 
 * Did you remember to sign in today?
 * Was the equipment in the Idle (Yellow light) state? If not it may be offline.
