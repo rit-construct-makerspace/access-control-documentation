@@ -47,7 +47,7 @@ Most equipment in the shop requires approval by staff before using. Once you hav
 ## 2. Check if the machine you want is available
 
 * If a device is available but not in use, the light on the front will be **YELLOW**.
-    * See [User Quick Reference](User Quick Reference.md#determining-acs-state) for more information.
+    * See [User Quick Reference](User Quick Reference.md#determining-acs-state) to determine machine state based on light color.
 * Insert your ID until it stops against the internal stopper
 * The light should immediately start flashing, and then turn **GREEN** if you are approved to use the machine.
     * Any other color, see staff for assistance.
