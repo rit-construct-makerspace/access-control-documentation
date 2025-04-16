@@ -40,5 +40,4 @@ Light on front of the device will indicate device state;
 * Find the piece of equipment you want to use and click on it.
 * Check that all trainings are marked as taken, and that the Mentor Training Approval is complete.
  
-![image](https://github.com/user-attachments/assets/f834bb08-7966-49d7-ae9d-f1f776be02ff)
-
+![ACS Training Check](assets/acs machine training.png)

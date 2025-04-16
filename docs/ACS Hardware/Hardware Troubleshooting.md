@@ -1,6 +1,6 @@
 # Hardware Troubleshooting
 
-Click on a symptom below to expand the section and see rectifying steps.
+Click on a symptom below to expand the section and see diagnostic and rectifying steps.
 
 ??? note "ACS is in a lockout state despite nobody putting it in lockout, or randomly suddenly enters a lockout state."
     
@@ -27,7 +27,7 @@ Click on a symptom below to expand the section and see rectifying steps.
 
     **Triage Fix:**
 
-    * For ACS devices, users who have previously used the equiopment will be stored locally, and can still use the equipment.
+    * For ACS devices, users who have previously used the equipment will be stored locally, and can still use the equipment.
     * The above list can also be used to verify users to switch machine states to Always On, bypassing the ACS devices.
 
     **Cause 1: Network Hardware Failure**
@@ -69,9 +69,9 @@ Click on a symptom below to expand the section and see rectifying steps.
     * Check the Access Devices tabs on the website
       * If overtemperature, there will be a red border on the device
     * Shut down the device that is overtemperature and remove power if possible
-    * If tempearture is within normal operating range, configure a higher temperature limit on the ACS system
+    * If temperature is within normal operating range, configure a higher temperature limit on the ACS system
       * Keep in mind that the temperature limit is when any part of the system hits that number. Devices with Switches embedded in an enclosure or similar may require a higher temperature limit.
-      * Setting a temperature limit of 999C will disable the temperature safety (not reccomended).
+      * Setting a temperature limit of 999C will disable the temperature safety (not recommended).
 
     **Cause 2: Hardware Fault Detected**
 
@@ -100,10 +100,10 @@ Click on a symptom below to expand the section and see rectifying steps.
 
     **Cause 2: Power Input Failure**
 
-    * Check the power source (mains voltage, computer, etc.) for operation
-    * Attempt plugging in other devices that are known working, see if they get power
-    * Contact your facilities department is a power issue is found
-    * Contact your IT department is a power isuse related to a computer is found
+    * Check the power source (mains voltage, computer, etc.) for operation.
+    * Attempt plugging in other devices that are known working, see if they get power.
+    * Contact your facilities department is a power issue is found.
+    * Contact your IT department is a power issue related to a computer is found.
 
     **Cause 3: Cable Damage**
 
