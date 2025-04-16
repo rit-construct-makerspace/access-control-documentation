@@ -25,7 +25,7 @@ Light on front of the device will indicate device state;
 * Insert your card until it hits the stop inside the ACS Core.
     * Card should be inserted >75% of the way.
     * Light should immediately change.
-* If authroization granted: light will turn green and a "happy beep" will play.
+* If authorization granted: light will turn green and a "happy beep" will play.
     * You are now set to use the equipment!
     * Remove your card to end your session when complete.
 * If authorization denied: light will turn red and a "sad beep" will play.

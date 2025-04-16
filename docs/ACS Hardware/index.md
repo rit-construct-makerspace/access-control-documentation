@@ -9,8 +9,8 @@ The ACS Hardware is what enables our Access Control System to actually control a
 ## Terminology
 
 * **"Deployment"** refers to all connected Access Control devices on a single piece of equipment. 
-* **"Core"** is the heart of an ACS deployment. Read more at *ACS Core*.
-* **"Switch"** or "Switch Element" refers to the part of an ACS deployment 
+* **"Core"** is the heart of an ACS deployment. Read more at [ACS Core](ACS Core.md).
+* **"Switch"** or "Switch Element" refers to the part of an ACS deployment. Read more at [ACS Switches](ACS Switches.md).
 
 ## Roadmap
 
