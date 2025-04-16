@@ -4,7 +4,7 @@ For the end-user, a simple configuration interface has been developed. This allo
 
 ## Method 1: Configuration Software (Preferred)
 
-**[Click here to access the Access Control Configuration GitHub](https://github.com/rit-construct-makerspace/access-control-configuration)**
+**[Click here for the Access Control Configuration GitHub](https://github.com/rit-construct-makerspace/access-control-configuration)**
 
 Configuration software is currently under development, please check back soon!
 
@@ -85,6 +85,7 @@ The following parameters are not settings per se, but are sent like settings for
 
 * **Wipe** : Send with a "1" value to wipe all internal parameter stores, such as when decommissioning a device.
 * **DumpAll** : Exports most* settings as a JSON document, for easily saving backups or configuring new hardware.
+    * This also reports the MAC address.
     * If the firmware is compiled with the parameter *DumpKey* set to 0, the API key will be removed from the exported information. The only way to change this is to recompile and upload new firmware.
 
 ### JSON Configuration Examples
