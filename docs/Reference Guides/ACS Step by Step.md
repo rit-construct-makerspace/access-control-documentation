@@ -51,6 +51,8 @@ Most equipment in the shop requires approval by staff before using. Once you hav
 * Insert your ID until it stops against the internal stopper
 * The light should immediately start flashing, and then turn **GREEN** if you are approved to use the machine.
     * Any other color, see staff for assistance.
+* When you remove your ID, the machine will immediately return to its locked state.
+    * Be careful removing your ID on equipment like mills or sewing machines, where the sudden shutdown may cause issues with your project or lose your settings.
 
 ![Image](assets/training%20acs%20idle.jpg)
 ![Image](assets/training%20acs%20unlocked.jpg)
