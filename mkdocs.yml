@@ -33,6 +33,7 @@ markdown_extensions:
   - pymdownx.blocks.caption
   - toc:
       permalink: "#"
+      title: "On This Page:"
 
 
 copyright: RIT SHED Makerspace

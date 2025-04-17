@@ -1,0 +1,5 @@
+# Homepage
+
+## Announcements
+
+## Open Hours

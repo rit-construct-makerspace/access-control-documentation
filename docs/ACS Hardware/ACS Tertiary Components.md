@@ -17,7 +17,7 @@ The display is an in-development part, that provides a screen for the ACS deploy
 # Bypass Plug
 
 The Bypass Plug allows for a Switch to be toggled without a Core, instead using a physical toggle switch to connect the Switch's 5v out to the ACS Signal line.
-
+-
 # Expansion Card
 
 The Expansion Card allows for a single Core to connect to up to 3 downstream Switches or similar devices.

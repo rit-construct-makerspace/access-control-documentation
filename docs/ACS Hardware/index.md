@@ -6,7 +6,7 @@ title: Hardware Overview
 
 The ACS Hardware is what enables our Access Control System to actually control access to equipment. The Hardware is generally split into 3 sections;
 
-* The [Core](ACS Core.md) is the heart of an ACS deployment*.
+* The [Core](ACS Core.md) is the heart of an ACS deployment.
 * The [Switch](ACS Switches.md) is the part of the ACS deployment that interfaces with the equipment.
 * [Tertiary Components](ACS Tertiary Components.md) are additional optional components in a deployment that add further functionality.
 

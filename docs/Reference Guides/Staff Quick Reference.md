@@ -3,7 +3,7 @@
 This document is a brief reference on the operation and use of the ACS system, with reminders for staff on common use-cases and issues.
 
 !!! note
-    The other sectioncs of this reference website will contain useful information, and it is suggested to familarize yourself with all of it. Especially the in-depth troubleshooting pages in the Hardware and Website sections.Below is just the most common issues and reminders.
+    The other sections of this reference website will contain useful information, and it is suggested to familiarize yourself with all of it. Especially the in-depth troubleshooting pages in the Hardware and Website sections.Below is just the most common issues and reminders.
 
 ## Determining ACS State
 Light on front of the device will indicate device state;
