@@ -44,6 +44,9 @@ markdown_extensions:
 
 copyright: RIT SHED Makerspace
 
+extra_css:
+  - stylesheets/extra.css
+
 extra:
   annotate:
     json: [.s2]

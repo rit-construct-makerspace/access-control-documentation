@@ -54,9 +54,11 @@ In addition to what a Mentor can do, Staff can:
 * Change a user's role, including their own.
 * Manually create approvals for equipment that has no associated trainings, and/or equipment the user has not completed trainings for.
 * Create or edit [tools for checkout](./Tool%20Checkout.md).
-* Write and view [user notes](#user-notes)
+* Write and view [user notes](#user-notes).
 
 ## User Information
+
+![Image](./assets/make%20user%20info.png){: align=left loading=lazy width="375"}
 
 When a user logs in to the website for the first time and an account is created, some information is pulled down to complete their makerspace account. This includes;
 
@@ -76,6 +78,7 @@ The website checks the SSO records every night for changes to preferred name and
 
 The website is developed to also display a user photo, but this not currently implemented at RIT for privacy reasons. All users have the same placeholder user photo for now.
 
+
 ## ID Cards
 
 To use ACS equipment, users will need a physical NFC card associated with their account. While it makes the most sense to use pre-issued university IDs or similar, there's no reason you couldn't also just issue arbitrary "makerspace ID" cards. 
@@ -86,6 +89,8 @@ ACS devices are programmed to look for ID Cards that match the right UID length 
 
 The UID of a user's card needs to be manually associated by a [Maker Mentor](#mentor-role) or [Staff](#staff-role) before it will work for ACS. The UID can be entered on the user account, accessible through the "People" page. Scanning an unrecognized card at a sign-in reader will report the UID in the history, so it can be easily copied and pasted into the user profile. Card numbers also need to be updated whenever a new card is issued and/or the old one is lost. Only one UID can be associated with a user, and they cannot share that UID with other users.
 
+![Image](./assets/make%20card%20tag%20setting.png)
+
 ## User Notes
 
 [Staff](#staff-role) have the ability to add notes to a user's account on the "People" page. This can be useful for remembering information about a user. All other staff can see and edit the notes. 
@@ -94,8 +99,12 @@ The UID of a user's card needs to be manually associated by a [Maker Mentor](#me
 
 In the event that a user of the shop does something unsafe or otherwise in violation of lab policies, an account hold can be placed by [Staff](#staff-role) or [Maker Mentors](#mentor-role). When placing a hold, the user will be prompted to add a note with some information. 
 
-When a user has an account hold, the system will stop them from performing most functions. They will not longer be able to use ACS-equipped machines, check out tools, etc. 
+When a user has an account hold, the system will stop them from performing most functions. They will no longer be able to use ACS-equipped machines, check out tools, etc. 
 
 Users with holds on their account are sorted to the top of the "People" page and given a red border for easier identification by staff.
 
 An account hold can only be removed by someone with Staff role. The record of the hold (the note, who placed it, who removed it, when, etc.) will be permanently on the user's account.
+
+![Image](./assets/active%20hold.png)
+
+![Image](./assets/removed%20hold.png)

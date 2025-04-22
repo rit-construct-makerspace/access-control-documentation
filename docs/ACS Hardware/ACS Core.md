@@ -33,7 +33,7 @@ The entire premise of ACS works on the idea that users have a unique NFC card, u
 
 Card presence is detected by 2 limit switches. Once the switches detect a card's presence, it is read by the NFC reader. The ID card is re-read periodically to ensure the right one is still present. When the switches detect the card is removed, the system returns to idle state after a 50 millisecond safety timer. A card being re-inserted in this time is treated as a continuation of the session.
 
-The [NFC UID is used for user identification](../ACS%20Website/User%20Management.md#id-cards). Hardware version 2.4.X and beyond optionally checks for the proper NFC SAK and REQA response as a security measure. Once SAK and REQA are matched, the system makes an [Authorization API Call](./API%20Information.md#Authorization).
+The [NFC UID is used for user identification](../ACS%20Website/User%20Management.md#id-cards). Hardware version 2.4.X and beyond optionally checks for the proper NFC SAK and REQA response as a security measure. Once SAK and REQA are matched, the system makes an [Authorization API Call](./API%20Information.md#authorization).
 
 ### Offline Users List
 
@@ -55,7 +55,7 @@ Since a network connection is crucial to ACS operating, a network watchdog is co
 
 1. Check network state. If the network connection is not reporting as nominally connected, re-attempt the connection. If it fails, skip to restart.
 2. If the network is nominally connected and/or was able to reconnect, check access to the internet. Do this by pinging www.rit.edu. If we get a bad HTTP response, skip to restart.
-3. If the internet is working, check the server specifically. Make an API [Check](./API%20Information.md#Check) call to verify the server is working.
+3. If the internet is working, check the server specifically. Make an API [Check](./API%20Information.md#check) call to verify the server is working.
     * If we get an HTTP response other than 200, the server is probably down.
     * If we get a negative HTTP response, our connection is probably bad/damaged somehow that wasn't previously caught. 
 
