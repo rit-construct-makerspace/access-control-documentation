@@ -4,21 +4,21 @@ This page details ACS-compatible components that are used in more complex deploy
 
 This page also includes diagnostics components used in testing and development.
 
-# Sign-In Reader
+##Sign-In Reader
 
-The Sign-In Reader is a variant of the [ACS Core](ACS Core.md), that allows users to sign in to a space. ACS Cores can optionally be configured to not unlock if the user has not signed in to the space yet today. This can be used for statistics collection, as well as to ensure users speak to members of staff before starting to work. 
+The Sign-In Reader is a modified version of the [ACS Core](ACS Core.md) hardware, that allows users to sign in to a space. ACS Cores can optionally be configured to not unlock if the user has not signed in to the space yet today. This can be used for statistics collection, as well as to ensure users speak to members of staff before starting to work. 
 
 ![Sign In Reader](assets/acs sign in.jpg)
 
-# Display
+##Display
 
 The display is an in-development part, that provides a screen for the ACS deployment. This can be used in lieu of the buzzer/speaker output of the ACS Core for deaf/HoH users or for noisy environments. It also allows persistent displays of information in the shop.
 
-# Bypass Plug
+##Bypass Plug
 
 The Bypass Plug allows for a Switch to be toggled without a Core, instead using a physical toggle switch to connect the Switch's 5v out to the ACS Signal line.
--
-# Expansion Card
+
+##Expansion Card
 
 The Expansion Card allows for a single Core to connect to up to 3 downstream Switches or similar devices.
 
@@ -30,7 +30,7 @@ The ACS signal from the upstream port is re-driven before being passed to the do
 
 The identifier pin is grounded, to indicate to the Core that the switch type cannot be determined.
 
-# Logic Connector
+##Logic Connector
 
 The Logic Connector allows for 2 Cores to operate on the same deployment, combining their signals in one of 3 logical expressions;
 

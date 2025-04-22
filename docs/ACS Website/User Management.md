@@ -17,7 +17,7 @@ Makers can:
 * View the shop hours, announcements, and other [homepage information](./Homepage.md).
 * Access any additional links in the "Maker" sidebar.
 
-### Mentor Role
+###Mentor Role
 
 The Maker Mentor, shortened in most places to **Mentor**, is the role intended for student staff, shop monitors, etc.
 
@@ -92,7 +92,7 @@ The UID of a user's card needs to be manually associated by a [Maker Mentor](#me
 
 ## Holds
 
-In the event that a user of the shop does something unsafe or otherwise in violation of lab policies, an account hold can be placed by [Staff](#staff-role) or [Maker Mentors](#mentor-role). When placing a hold, the user will be prompted to add a note or some information. 
+In the event that a user of the shop does something unsafe or otherwise in violation of lab policies, an account hold can be placed by [Staff](#staff-role) or [Maker Mentors](#mentor-role). When placing a hold, the user will be prompted to add a note with some information. 
 
 When a user has an account hold, the system will stop them from performing most functions. They will not longer be able to use ACS-equipped machines, check out tools, etc. 
 

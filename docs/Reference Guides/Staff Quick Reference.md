@@ -5,7 +5,7 @@ This document is a brief reference on the operation and use of the ACS system, w
 !!! note
     The other sections of this reference website will contain useful information, and it is suggested to familiarize yourself with all of it. Especially the in-depth troubleshooting pages in the Hardware and Website sections.Below is just the most common issues and reminders.
 
-## Determining ACS State
+##Determining ACS State
 Light on front of the device will indicate device state;
 
   * **YELLOW SOLID**: Idle mode, ready to accept card.
@@ -28,7 +28,7 @@ ACS State can also be found in the Staff section of the website.
   * Left menu, "Access Devices".
   * Search device name or find in list.
 
-## Changing Device State
+##Changing Device State
 
 The following instructions are for staff and authorized personnel only.
 
@@ -50,7 +50,7 @@ The following instructions are for staff and authorized personnel only.
     * TODO
 * Remove key and ID card when complete.
 
-## Restarting Device
+##Restarting Device
 
 Preferred Method: Restart Button
 
@@ -72,7 +72,7 @@ Backup Method: Power Cycle (All Versions):
   * Wait 5 seconds before plugging back in.
   * In a power-on reset, the machine will go to the "Startup" state, and need a key to return to normal operation.
 
-## Why can't (user) access this device? 
+##Why can't (user) access this device? 
 
 * Go to "History" in the Staff section on the left side of the screen.
 * Search the user's name to find their history.

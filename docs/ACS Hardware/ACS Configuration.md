@@ -37,7 +37,7 @@ You may start to see information printing in this area, depending on what the AC
 Now all you have to do to apply settings is to paste a properly-formatted serialized JSON into the bar next to the baud rate, and press enter! The ACS Core will report if the settings have been applied, and if so, restart.
 
 !!! warning
-    Sending improperly formatted JSONs, or JSONs with improper passwords too many times can result in all settings being wiped for safety reasons! If you get an error more than 2-3 times, power cycle the ACS Core to wipe the number of errors and continue trying.
+    Sending improperly formatted JSONs, or JSONs with improper passwords too many times can result in all settings being wiped for security reasons! If you get an error more than 2-3 times, power cycle the ACS Core to wipe the number of errors and continue trying.
 
 ### JSON Formatting
 
@@ -50,7 +50,7 @@ The order of parameters in the JSON doesn't matter. You can include as many para
 JSON parameters and values are case sensitive. Invalid, misspelled, or unused parameters are simply ignored.
 
 !!! warning
-    While improper or unused parameters are ignored, improperly-formatted values will cause unexpected behavior!  The system will try its best to figure out minor issues (e.g. putting 1 instead of "1"), but on more complex errors it is often wrong!
+    While improper or unused parameters are ignored, improperly-formatted values will cause unexpected behavior!  The system will try its best to figure out minor issues (e.g. putting 1 or "01" instead of "1"), but on more complex errors it is often wrong!
 
 !!! warning
     There is no verification or confirmation before new settings are applied, make sure to double-check spelling and configuration before sending the message.
@@ -62,13 +62,21 @@ The following parameters are accepted settings in a JSON:
 * **OldPassword** : The only required parameter! This password needs to match the internal saved password to continue. Forget your password? See **Wipe** below.
 * **NewPassword** : Sets a new password for uploading ACS settings.
 * **SSID** : WiFi network name (SSID) to attempt to connect to on startup.
-* **Password** : WiFi network password, to attempt to connect with on startup. Not to be confused with the ACS password, **OldPassword** and **NewPassword**. Set to "null" (case sensitive) to not use a password.
+* **Password** : WiFi network password, to attempt to connect with on startup. Set to "null" (case sensitive) to not use a password. 
+
+    !!! warning
+        Not to be confused with the ACS password, **OldPassword** and **NewPassword**. 
+
 * **Server** : The server to make API calls to. Should be formatted as a complete URL, e.g. "https://make.rit.edu"
 * **Key** : The server's API key.
-* **MachineID** : The machine's unique identifier name. Must be all lowercase a-z or 0-9 characters.
-* **MachineType** : The numerical machine type, can be found on the website under *Manage Equipment*
+* **MachineID** : The machine's unique identifier name.
+
+    !!! note
+        Any valid character for a URL can be used as part of the MachineID, except for **&** (ampersand) and **?** (question mark).
+
+* **MachineType** : The numerical machine type, can be found on the website under [Equipment Management](../ACS%20Website/Equipment%20Management.md).
 * **SwitchType** :  Not currently used. Eventually will be the type of switch that should be connected, for system integrity checks.
-* **Zone** : The room/area the equipment is located in. Used for sign-in authentication. Numerical representation, found on website under *Rooms*
+* **Zone** : The room/area the equipment is located in. Used for sign-in authentication. Numerical representation, found on website under [Rooms](../ACS%20Website/Equipment%20Management.md#rooms-and-zones).
 * **NeedsWelcome** : If set to 1, will not activate the equipment if the user has not signed into the **Zone** yet today. 
 * **TempLimit** : Whole degrees Celsius, if any part of the ACS gets above this temperature it locks out the equipment. Set to 0 to disable.
 * **NetworkMode** : Not currently used. Eventually will let you set WiFi only, ethernet only, or both.
@@ -76,36 +84,42 @@ The following parameters are accepted settings in a JSON:
 * **NoBuzzer** : Set to 1 to turn off buzzer tones and (if applicable) other audio outputs from the Core.
 * **DebugMode** : If 1, sends verbose running data to the Serial output. 
 
-!!! warning
-    Enabling DebugMode can expose sensitive information, such as WiFi credentials, API keys, ID card numbers, and more. Do not use unless you need it, turn off when not used!
+    !!! warning
+        Enabling DebugMode can expose sensitive information, such as WiFi credentials, API keys, ID card numbers, and more. Do not use unless you need it, turn off when not used!
 
 ### JSON Special Parameters
 
 The following parameters are not settings per se, but are sent like settings for other purposes.
 
 * **Wipe** : Send with a "1" value to wipe all internal parameter stores, such as when decommissioning a device.
-* **DumpAll** : Exports most* settings as a JSON document, for easily saving backups or configuring new hardware.
-    * This also reports the MAC address.
-    * If the firmware is compiled with the parameter *DumpKey* set to 0, the API key will be removed from the exported information. The only way to change this is to recompile and upload new firmware.
+* **DumpAll** : Exports most* settings as a JSON document, for easily saving backups or configuring new hardware. This also reports the base (wlreless) MAC address. Ethernet MAC (if applicable) is 1 value higher on the last octet.
+
+    !!! info
+        If the firmware is compiled with the parameter *DumpKey* set to 0, the API key will be removed from the exported information. The only way to change this is to recompile and upload new firmware.
+
 
 ### JSON Configuration Examples
 
-=== "Turn on Debug Mode"
+Click to expand
+
+??? "Turn on Debug Mode"
 
     > {"OldPassword":"Shlug","DebugMode":1"}
 
-=== "Set new WiFi Credentials"
+??? "Set new WiFi Credentials"
 
     > {"OldPassword":"Shlug","SSID":"WifiName","Password":"null"}
 
-=== "Export Current Configuration"
+??? "Export Current Configuration"
 
     > {"OldPassword":"Shlug","DumpAll":"1"}
 
-=== "Forgot password, wipe all settings and set a new password"
+??? "Forgot password, wipe all settings and set a new password"
 
     > {"Wipe":"1"}
 
     After restart, you can send the following when prompted: 
 
-    > {"NewPassword":"Shlug"}
+    > "NewPassword":"Shlug"
+
+    along with any other parameters you want to initially set.

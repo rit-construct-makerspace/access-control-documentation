@@ -22,6 +22,12 @@ theme:
 markdown_extensions:
   - admonition
   - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
   - pymdownx.superfences
   - def_list
   - pymdownx.tasklist:
@@ -39,6 +45,8 @@ markdown_extensions:
 copyright: RIT SHED Makerspace
 
 extra:
+  annotate:
+    json: [.s2]
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/rit-construct-makerspace/access-control-documentation
