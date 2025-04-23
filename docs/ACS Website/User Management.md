@@ -4,7 +4,10 @@ Each makerspace user has an account on the website, accessible by the shibboleth
 
 ## Roles
 
-The website supports 3 tiers of user, to restrict access to certain resources and menus.
+The website supports 3 tiers of user, to restrict access to certain resources and menus. 1 user role, and 2 levels of staff roles
+
+!!! note
+    "Staff" is conversationally used to refer to both the [Maker Mentor](#mentor-role) and [Staff](#staff-role) roles. When referring specifically to the "Staff" role, it will be capitalized.
 
 ### Maker Role
 
