@@ -1,6 +1,6 @@
-#Trainings
+# Trainings
 
-##Training Quizzes
+## Training Quizzes
 
 The first step in gaining access to equipment is to complete the training quizzes associated with the equipment.
 
@@ -25,7 +25,7 @@ Training quizzes are made of block elements, that can be dragged into any order 
 * **Image**: This block allows you to include a static image. The image must be hosted by some other CDN, and then you paste in a link to that image.
 * **PDF**: This block displays a PDF in an embedded PDF reader, ideal for manuals and other long-form written content. Just like with images, the PDF needs to be hosted elsewhere and linked into the training.
 
-###API Triggers
+### API Triggers
 
 Completing a training quiz can optionally trigger an API call. As an example at RIT, completing the "3D Printing Self-Serve Training" automatically adds the user to the proper workgroup on 3DPrinterOS, automating access to the 3D printers.
 
@@ -39,7 +39,7 @@ Non-archived trainings can be added as a requirement on the "Manage Equipment" p
 
 Trainings can be removed or added to equipment at any time. Adding a new training will stop users from using the equipment until the new training is complete. They will not have to re-complete the [Staff Approval](#staff-approval). Editing a training does not require users to re-take the new version.
 
-##Staff Approval
+## Staff Approval
 
 Once all the required trainings have been completed, users have the ability to complete the Staff Approval with either a [Maker Mentor](./User%20Management.md#mentor-role) or [Staff](./User%20Management.md#staff-role). 
 

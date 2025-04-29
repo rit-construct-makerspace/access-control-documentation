@@ -122,7 +122,7 @@ Jim Heaney approved the Sewing Machine - Bernina 475 access check for (Student N
 
 ### Training Submissions
 
-This section shows users completing [Training Quizzes](./Trainings.md#training=quizzes). The user, the quiz, and the score are reported.
+This section shows users completing [Training Quizzes](./Trainings.md#training-quizzes). The user, the quiz, and the score are reported.
 
 Example:
 
@@ -136,3 +136,31 @@ Any message type that does not fit one of the above categories goes into Uncateg
 
 ## Statistics
 
+The Statistics page shows summary information about the shop that is useful for gauging use.
+
+### Today's Numbers
+
+This section shows information about today's usage of all spaces. Statistics reset at midnight local.
+
+!!! note
+    "Room Sign-Ins" counts all unique rooms signed into by users that day, not sign-ins by users. So if a user signs into multiple rooms, they will be counted multiple times.
+
+![Image](./assets/make%20today's%20numbers.png)
+
+### Room Usage
+
+The Room Usage section lets you generate graphs showing the number of sign-ins per hour per room per day. This can be useful for identifying trends in usage for informing staffing.
+
+Optionally, the graphs can show both the sum for that specific day and the average over a range for each hour. This can be useful for comparing an arbitrary week's sign-ins to the average. 
+
+![Image](./assets/make%20room%20usage%20graph.png)
+
+![Image](./assets/make%20room%20usage.png)
+
+### Equipment Usage
+
+The Equipment Usage section shows how often machines are being used, as well as a percentage utilization versus the open hours of the space they are located in. A data range can be specified to narrow down the results.
+
+### Trainings
+
+The Training section lets you see how many people took and passed a training in the defined time frame. The pass rate will be calculated for each test.
