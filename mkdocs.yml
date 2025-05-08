@@ -1,6 +1,6 @@
 site_name: Access Control Documentation
 theme:
-  logo: ./assets/rit_hor.svg
+  logo: ../assets/rit_hor.svg
   favicon: assets/tiger-icon.svg
   name: material
   palette:
