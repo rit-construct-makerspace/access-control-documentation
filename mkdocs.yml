@@ -1,7 +1,7 @@
 site_name: Access Control Documentation
 theme:
-  logo: rit_hor.svg
-  favicon: tiger-icon.svg
+  logo: https://raw.githubusercontent.com/rit-construct-makerspace/access-control-documentation/refs/heads/main/docs/assets/RIT_hor.svg
+  favicon: assets/tiger-icon.svg
   name: material
   palette:
     - scheme: default
