@@ -16,10 +16,10 @@ The AC Power Switch is the most-used Switch variant. It provides a standard NEMA
 
 The heart of the switch is an Xiamen Hongfa Electroacoustic HF165FD-G high-power relay. The relay is UL rated for:
 
- * 40A 277VAC 40C
- * 1HP 120VAC 40C
- * 96LRA/30FLA 40C
- * TV-8 125VAC 40C
+* 40A 277VAC 40C
+* 1HP 120VAC 40C
+* 96LRA/30FLA 40C
+* TV-8 125VAC 40C
 
 The relay is wired in a normally-open configuration, so that a lack of control signal or an internal power fault results in a shutdown within 10 milliseconds. Only the live is interrupted, neutral and earth are always connected for safety purposes. 
 
