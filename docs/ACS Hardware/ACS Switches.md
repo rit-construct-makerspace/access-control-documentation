@@ -15,6 +15,7 @@ For generalized information on selecting a Switch for your machine, see the page
 The AC Power Switch is the most-used Switch variant. It provides a standard NEMA 5-15R (US Wall Outlet) for plugging equipment into. Input power is provided through a NEMA C14 (Computer Power Cable) Receptacle. Power for the ACS system is drawn from the C14 as well. The power regulator and the NEMA 5-15R are on independent fuses, so an overcurrent on the equipment doesn't cut power to the ACS and vice-versa. 
 
 The heart of the switch is an Xiamen Hongfa Electroacoustic HF165FD-G high-power relay. The relay is UL rated for:
+
     * 40A 277VAC 40C
     * 1HP 120VAC 40C
     * 96LRA/30FLA 40C
