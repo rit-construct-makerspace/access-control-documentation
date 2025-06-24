@@ -20,4 +20,4 @@ The hardware is what allows our system to control access to machines. Each piece
 
 ## License
 
-The Access Control System Hardware is licensed under [Creative Commons CC-BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en). 
+This project is licensed under the CERN-OHL-S License.
