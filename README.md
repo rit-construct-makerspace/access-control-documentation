@@ -17,6 +17,6 @@ For development-specific information, see the relevant GitHub Repository:
 
 The documentation uses the MKDocs Material Theme.
 
-The entire Access Control System project is licensed by the Rochester Intitute of Technology SHED Makerspace under the Creative Commons CC-BY-NC-SA 4.0 License. 
+This project is licensed under the CERN-OHL-S License. See LIECENSE.txt for more information.
 
 Contact us at make@rit.edu. 
