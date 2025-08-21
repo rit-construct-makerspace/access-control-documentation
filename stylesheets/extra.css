@@ -1,0 +1,8 @@
+.md-content img {
+    border-width: 1px;
+    border-style: solid;
+    border-color: orange;
+    outline-width: 3px;
+    outline-style: solid;
+    outline-color: darkorange;
+  }
