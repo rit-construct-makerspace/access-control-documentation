@@ -7,7 +7,7 @@ This guide will show you everything you need to do to use a piece of equipment i
 ### 1. Create Your Makerspace Account
 
 * Before using any equipment in the makerspace, you must create an account at make.rit.edu.
-* Make sure to complete the [Shop Safety Training](https://rit.sabacloud.com/Saba/Web_spf/NA3P1PRD0049/common/leclassview/dowbt-0000146117) mandated by RIT Health & Safety before using any makerspace equipment.
+* Make sure to complete the Shop Safety Training mandated by RIT Health & Safety before using any makerspace equipment. The link can be found on make.rit.edu.
 * Before using any ACS-controlled equipment, you will need to have your ID card registered. Stop by any of the makerspaces and speak to a member of staff.
     * Until you resolve this, you will see the following error:
 
