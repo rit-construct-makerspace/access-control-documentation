@@ -24,7 +24,7 @@ There is no centralized standard for the creation of ACS Unique Device IDs, rath
 
 The standard method of enumeration is by ID Collision. This enumeration scheme takes advantage of the natural CAN arbitration. 
 
-To begin this process, the Core sends the *Coll-Enum* message, targeted at 0x00. Upon receiving this message, all devices in the network begin attempting to transmit a CAN message containing their full unique ID and device priority, with the message ID as the 29 LSBs of the ID. If a collision occurs, the higher-number ID will lose arbitration and attempt again later. The Core will keep track of the incoming full IDs, to use in the next step. Once sufficient quiet time has passed, the Core can assume every device has sent their ID.
+To begin this process, the Core sends the *Coll-Enum* message, targeted at 0x00. Upon receiving this message, all devices in the network begin attempting to transmit a CAN message containing their full unique ID in the first 8 bytes, and device priority as the 9th byte, with the message ID as the 29 LSBs of the ID. If a collision occurs, the higher-number ID will lose arbitration and attempt again later. The Core will keep track of the incoming full IDs, to use in the next step. Once sufficient quiet time has passed, the Core can assume every device has sent their ID.
 
 ## Targeted ID Enumeration
 
@@ -37,6 +37,7 @@ After assigning an address to a device, the Core will conduct a series of messag
 * Device type, name, manufacturer (for deployment composition reporting)
 * Desired power draw or maximum power consumption (for power allocations)
 * Current firmware version and URL to check for new firmware (for OTA updating)
+* Maximum CAN frequency (for higher speed operation)
 
 ## Missed Device Detection
 

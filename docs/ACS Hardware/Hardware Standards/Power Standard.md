@@ -36,9 +36,9 @@ All power providers must connect to the bus via an always-blocking ideal diode, 
 
 Power providers must be implemented in a way that their output to the bus can be programatically disabled. 
 
-Power providers must monitor their output voltage, and report it 
+Power providers must monitor their output voltage, and report it regularly.
 
-**IP** devices are permitted and recommended to power their internal circuitry independent of the bus connection, to permit optimization around the nominal voltage-supplying capability of the power providing circuitry, and/or to better-utilize the power supply's capacity that cannot be delivered to the bus. Any power provided internally does not detract from the 6.5 watt requirement to the bus. Internal circuitry powered in this way cannot also draw power from the bus. 
+Power providers must power any internal electronics from the power source independent of the 6.5 watt bus power minimum. **IP** devices may permanently connect the Consumer to their Provider, and then not draw any power from the bus. **OP** devices must prioritize their internal supply over bus power. 
 
 ## Power Consumer Requirements
 

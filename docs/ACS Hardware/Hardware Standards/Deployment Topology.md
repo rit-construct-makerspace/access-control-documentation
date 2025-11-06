@@ -22,7 +22,7 @@ All devices in an ACS deployment must serve one of the following topology roles;
 
 There are two styles of topologies permitted in an ACS deployment;
 
-* **Single-Branch** deployments must be comprised of 2 LTs on either end of the branch, with up to 6 other PTs. 
+* **Single-Branch** deployments must be comprised of 2 LTs on either end of the branch, with up to 6 other PTs. One device must be a Core.
 * **Multi-Branch** deployments can be comprised of up to 4 branches, each with an LT on one end and no more than 7 PTs, all converging at a single Router. At least one of these devices must be a Core.
 
 There is no minimum size for an ACS deployment, so long as all communication lines are properly terminated or unused.
