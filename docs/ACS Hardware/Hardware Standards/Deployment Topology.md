@@ -12,27 +12,21 @@ All devices in an ACS deployment must serve one of the following topology roles;
 
 * **Line Terminator** : (LT), These are devices that have 1 connection to other devices, and act as the end of a *branch* in the deployment.
 
-* **Pass-Through** : (PT), These are devices that have 2 connections to other devices, allowing them to sit between other devices on the *branch*. Pass-through devices may only connect to one device on either side, and cannot specify a connection orientation. 
+* **Passive Line Terminator** : (PLT), These are devices without electronics that can be plugged into a connector to terminate it.
+
+* **Pass-Through** : (PT), These are devices that have 2 connections to other devices, allowing them to sit between other devices on the *branch*. Pass-through devices may only connect to one device on either side, and cannot specify a connection orientation. PT devices must clearly label they cannot operate with an open connector.
 
 * **Optional Terminator** : An Optional Terminator (OT) is a device that can act as both a Line Terminator or a Pass-Through device, depending on its self-detected position in the *branch*. For the purposes of this documentation, unless otherwise specified, any reference to a Line Terminator or Pass-Through also applies to an Optional Terminator.
 
-* **Router** : A Router is an optional device that allows the interconnecting of multiple branches. It must act as the end of a *branch*.
+* **Router** : A Router is an optional device that allows the interconnecting of multiple branches. It must act as the end of a *branch*, and can have up to 4 branch connectors.
 
 ## Topology Limits
 
-There are two styles of topologies permitted in an ACS deployment;
+There are relatively few limits on a deployment;
 
-* **Single-Branch** deployments must be comprised of 2 LTs on either end of the branch, with up to 6 other PTs. One device must be a Core.
-* **Multi-Branch** deployments can be comprised of up to 4 branches, each with an LT on one end and no more than 7 PTs, all converging at a single Router. At least one of these devices must be a Core.
+* No more than 62 devices across the deployment, including the Core and any Routers.
+* Cumulative cable lengths exceeding 20 feet on a branch may lead to degraded performance. 
+
+Deployments are comprised of one or more *branches*. A branch is defined as a straight-line connection of devices, with an LT or OT on each end. A branch can also end at a Router, permitting multiple branches to join on a deployment. Routers can continuously be waterfalled to create infinite branches, so long as device counts are respected.
 
 There is no minimum size for an ACS deployment, so long as all communication lines are properly terminated or unused.
-
-## Core
-
-The Core is a special device in the ACS deployment's topology. This is defined as the only device in the ACS deployment that can speak to outside sources of truth, such as an Access Control Server. 
-
-In a *Single-Branch* deployment, there can only be one Core. In a *Multi-Branch* deployment, there can be no more than 1 Core per branch, with the master Core being determined as the Core connected to the lowest-number branch of the Router. 
-
-The Core can be designed to act as an LT, PT, or OT device. The Core can act as a Router as well, in which case the Core inherent to the Router always become the master Core. 
-
-Any other Cores become standby Cores. Standby Cores do nothing except maintain an active network connection, and listen to the state of the master Core. If the master Core loses network connection or becomes incapacitated, standby Cores can assert their role as master.

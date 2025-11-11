@@ -4,49 +4,42 @@
 
 Upon the Core initializing or after the Core commands a hard shutdown of all devices on the bus, all devices must be re-enumerated. Enumeration is used by the Core to understand the type, limitations, and needs of devices on the bus. It is also how all devices receive their unique IDs for CAN FD messaging. 
 
-Until enumeration is complete, devices cannot use the CAN bus as they normally would. 
+The geneal process for enumeration is as follows;
 
-## Unique Device ID
+### Step 1: Branch Loop
 
-All ACS devices need a globally unique ID. This ID is a 64 bit value, that is used as a long-hand way to identify a device until the Core provides it a 6 bit address. The unique ID can also be used for deployment integrity checks, tracking of hardware lots, etc.
+The first step in enumeration is determining that a branch is properly terminated. This ensures that the CAN bus can be used for the following steps. 
 
-There is no centralized standard for the creation of ACS Unique Device IDs, rather a standard is built on pre-existing sources of uniqueness inherent to the hardware;
+*Note* : If a Core implements multiple HD15 ports, it must have a way to isolate CAN on just the HD15 it is performing a Branch Loop test on. It performs the following process on each HD15 port in a deterministic order.
 
-* **MAC-Based Unique ID** : If the device has a MAC address, it can be extended to a 64 bit unique identifier by adding 0xFFFE between the OUI and extension identifier. Devices that have multiple MAC addresses should use the lowest-value internet MAC for this.
+This is started by the Core pulling low the Voltage Sag (VS) pin on its HD15 connector. The next device connected will see this, and pull its VS pin on the other HD15 low. When a device pulls VS low, it also pulls the interrupt line low for 100-250mS, to indicate to the device(s) upstream that there is another device present. This process repeats until one of the following;
 
-* **Flash-Based Unique ID** : Most flash memory developed by Winbond and similar implement a JEDEC-compliant 64 bit unique ID. This will be 64 bits long by default, and can be used directly. 
+* An LT or Router is reached, so the line is definitely sealed.
+* An OT does not hear an interrupt for >500ms after pulling VS low, indicating there is not another device downstream. It shuts down that HD15 port and terminates the bus. 
+* A PT device does not hear an interrupt for >500ms after pulling VS low, indicating there is not another device downstream. Since a PT device cannot terminate the bus, it asserts interrupt low for >1 second. This indicates to the Core that the bus could not be closed, and it should report as an error. 
 
-* **Microcontroller Serial Number** : Many microcontrollers have a unique ID that can be used for this purpose. This is only permitted if the serial number is already 64 bits.
+Once the device on the end of the branch is reached, it informs the Core via CAN message *BRANCH-DONE*. If the device is a Router, it notifies the Core of this in the message, and then the Router begins Branch Loop testing on its downstream (i.e. not including the Core) branches. **TODO** finalize how the Router plays into this.
 
-* **OneWire Address** : OneWire devices are identified with a 64 bit unique ID, that can be used directly. 
+### Step 2: CAN Enumeration
 
-## ID Collision Enumeration
+After a deployment has been confirmed to be properly terminated, The Core can begin the enumeration process. The Core de-asserts the VS pin to the first device, which then triggers the device to send its device information. See [Enumeration Information](#Enumeration-Information) for more information. After all information is sent to the Core, the Core responds with *SET-ADDR* to give the device its new address for future CAN communication. Upon recieving this message, the device de-asserts its VS pin to the next device, and the process repeats. 
 
-The standard method of enumeration is by ID Collision. This enumeration scheme takes advantage of the natural CAN arbitration. 
+When the terminator is reached, the Core will know this due to the serial number matching what was sent in the previous *BRANCH-DONE* message. 
 
-To begin this process, the Core sends the *Coll-Enum* message, targeted at 0x00. Upon receiving this message, all devices in the network begin attempting to transmit a CAN message containing their full unique ID in the first 8 bytes, and device priority as the 9th byte, with the message ID as the 29 LSBs of the ID. If a collision occurs, the higher-number ID will lose arbitration and attempt again later. The Core will keep track of the incoming full IDs, to use in the next step. Once sufficient quiet time has passed, the Core can assume every device has sent their ID.
+### Step 3: Bus Release
 
-## Targeted ID Enumeration
+When the Core has repeated the Branch Loop and CAN Enumeration routine for every branch of the deployment, it can release the devices to normal operation with *CAN-START*. The Core should also begin pulsing the heartbeat at this time. 
 
-Once the Core has a list of all device unique IDs from the ID Collision Enumeration step, it will begin enumerating the devices by sending the *Tgt-Enum* message, targeted at 0x00, but containing the 64 bit address of the device that the Core wishes to address, and including the device's new address. The Core determines the order to assign device addresses based on the self-reported device priority from ID Collision Enumeration. 
+## Hot-Plug
 
-Alternatively, if the Core thinks it knows the unique IDs of all devices in the deployment, it can skip ID Collision Enumeration and come directly to Targeted ID Enumeration.
+This standard does not officially support the hot-plugging of devices, but there are situations where a device may join the bus after enumeration (slow to boot, crashed and is restarting, etc.). 
 
-After assigning an address to a device, the Core will conduct a series of messages more with the device to determine the following;
+A device can determine if it is joining an active bus by monitoring the heartbeat pin. If it is pulsing once or more per second, the bus is currently active. The device can discern the bus frequency by the heartbeat frequency, which are related 100,000:1. So for instance, a device detecting a 4Hz heartbeat knows the bus is running at 400KHz. Once matching bus frequency, the device can send a *NOT-ENUM* message to be enumerated by the Core.
 
-* Device type, name, manufacturer (for deployment composition reporting)
-* Desired power draw or maximum power consumption (for power allocations)
-* Current firmware version and URL to check for new firmware (for OTA updating)
-* Maximum CAN frequency (for higher speed operation)
+If the device activates and sees the heartbeat pin held high, that means the entire deployment is in a suspended or startup state, and it should wait for enumeration. If the hearbeat starts pulsing before the device is enumerated, it may join the bus and use the *NOT-ENUM* message as above.
 
-## Missed Device Detection
+## Enumeration Information
 
-If a device is somehow not enumerated, the Core catches this when it sends the *Not-Enum* message, targeted at 0x00. This prompts any unenumerated device to assert the interrupt pin, and the Core then begins ID Collision Enumeration again to find it. Devices that have already been assigned an address will not participate in this enumeration. 
+The following is the order of messages sent in enumeration: 
 
-Once the Core has confirmed there are no unenumerated devices, it can use *CAN-Start* message to enable normal bus operation.
-
-## Reverse Enumeration
-
-In the event of the Core losing power, crashing, or similar, there is not always a need to re-enumerate devices on the bus. If the Core detects normal CAN activity within 3 seconds of boot, it knows it is (re)joining an already-running deployment. It can assert the interrupt then simply use the same messages from Targeted ID Enumeration to gather all data needed to resume regular operation. 
-
-If the Core detects CAN activity that it cannot make sense of, it is likely at a different baud rate. In this case, the Core must assert shutdown to restart the entire deployment, and re-enumerate from scratch. 
+**TODO**

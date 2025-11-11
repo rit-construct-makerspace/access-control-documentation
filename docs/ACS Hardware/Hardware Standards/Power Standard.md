@@ -58,19 +58,22 @@ Power consumers can operate in one of the following power states;
 
 * **Standard Power** : During the enumeration, if power negotiations succseed the device enters standard power mode. This is the regular operational level of the device. 
 
-* **Reduced Power** : During the negotiation, the Core can assign a lower-than-requested power level for the device. The device must operate at this reduced power level and perform its core functionalities as best as possible. The possible reduced levels are 75%, 50%, 25% of the device's standard power level, and a static 0.75 watts. If any of the fractions of the device's standard power level are less than 0.75 watts, they can be omitted and replaced with 0.75 watts. If the device cannot operate at the reduced power level, it should enter a soft shutdown state.
+* **Reduced Power** : During the negotiation, the Core can assign a lower-than-requested power level for the device. The device must operate at this reduced power level and perform its core functionalities as best as possible. What a reduced power level looks like it up to the device's implementation. Devices may report multiple reduced power levels they support.
 
 * **Extra Power** : If a device is operating in Standard Power, it can request permission from the Core to exceed its standard power level, up to a level of 150% or 200% the standard level. The device must return to standard power level as promptly as possible, and inform the Core once it has released the extra power. 
 
-* **Soft Shutdown** : In this state, the device shuts down everything except for its microcontroller and any circuitry required to read the interrupt signal from the Core. The device will exit this state and go to an initialization power state upon receiving an interrupt. The device does not have to current limit to a level below the 0.75 watts of initialization state in this level. 
-
-* **Hard Shutdown** : In this state, the entire device is deactivated. This state can only be exited with the reset line from the Core, or a complete power cycle of the deployment.
+* **Hard Shutdown** : In this state, the entire device is deactivated. This state can only be exited with the shutdown line from the Core, or a complete power cycle of the deployment.
 
 ## Bus Voltage Monitoring
 
 In a distributed and modular system, where there are no guarantees as to the current-carrying abilities of the interconnecting cables, it is imperative that all devices in the deployment monitor for voltage drops that could indicate a damaged or overburdened cable. 
 
-No less frequently than once a second, all devices in the deployment must report their voltage. For consumers, this is the measured voltage on the input of their device. For providers, this is the measured output voltage. All measurements should take place on the bus-side of any protection circuitry, to account for the drop of said circuitry.
+When not used for [enumeration](./Enumeration.md), the Voltage Sag (VS) pin can be used to monitor for excessive voltage drop across a cable between two devices. The pin is connected to bus power with a 1kΩ +/-1% or better resistor on each end of the cable. Since a standard HD15 cable will always have the same resistance per cable, this can be used to infer voltage drop across the line. 
 
-In the event that any device hears a reported voltage that is 0.5v or more higher than their measured voltage, the device must immediately enter a soft shutdown, and report the potential excessive voltage drop to the Core.
+Devices must monitor both their bus voltage with respect to ground, and the voltage from VS with respect to ground. The difference between these numbers represents 1/2 the voltage drop across the HD15 cable's power pins. Since there are 5 ground pins versus the 4 power pins, we always know the voltage drop across ground is 20% less than measured drop across the power pins. 
 
+When operating from a voltage <=5.5 volts nominally, a voltage drop of no more than 200mV is permitted This represents a 1A load 20ft down a cable. When operating from a voltage >5.5 volts, a voltage drop of no more than 600mV is permitted. This represents a 3A load 20ft down a cable.
+
+The VS pin must be monitored at least once every 5 milliseconds. If voltage sags below acceptable levels for more than 50 continuous milliseconds, the device that detects it must assert the interrupt and send a *VOLT-SAG* message, telling other devices to reduce power consumption to prevent further issues.
+
+If the VS pin voltage sags more than 50% past acceptable levels (300mV and 900mV respectively), devices must immediately disable the power switch on that HD15 port, and immediately inform the system of the issue with a *VOLT-SAG* issue. 
