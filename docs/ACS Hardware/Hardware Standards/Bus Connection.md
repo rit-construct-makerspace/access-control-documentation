@@ -65,3 +65,44 @@ The shield is connected to ground at the Core. All other devices cannot interact
 ## Bus Isolation
 
 When a device is in a powered-off or hard shutdown state, it must electrically disconnect from all signals on the bus. This includes releasing the interrupt, if asserted. A device cannot connect to the bus unless its microcontroller or similar is properly executing code, and a hardware-generated power-good signal is asserted, such as from a regulator.
+
+Devices are permitted to draw an insignificant amount of power from the bus when in a powered-off or hard shutdown state for the purpose of maintaining any isolation circuitry.
+
+## IntraBus Connection
+
+Some devices may want to optionally extend the bus signals to other connected devices in a standard, modular way. This can be achieved with IntraBus. 
+
+*NOTE: IntraBus must only be followed when passing signals directly from the bus, and does not apply to generic modular devices.*
+
+The IntraBus standard defines how a bus-connected device, known as the "host", may extend bus signals through a per-device standardized interface, to allow for more complex add-ons without the complexity of an entire additional bus-attached device. 
+
+A host device may have any number of IntraBus devices, but each IntraBus device needs an independent connector, power and signal switching, etc.. IntraBus devices cannot be daisy-chained.
+
+IntraBus connections are at the discretion of design engineers for each device, there is no physical connector standardization for the IntraBus. 
+
+### IntraBus Power
+
+There is no standard for what voltage(s) are provided to IntraBus devices, only that;
+
+* All power for the IntraBus device comes from the host device. 
+* The host device must be able to shut off all power going to the IntraBus device.
+* All power switching to the IntraBus device must happen at the high side, grounds are always connected.
+* The power providing circuitry for the IntraBus connector starts in the off position when the host is powered on. 
+* The host must monitor and limit current going to an IntraBus device.
+* The IntraBus device drawing maximum current must not negatively impact the host device's regular operation. 
+* The combined current draw of the host device and the IntraBus device cannot exceed the maximum 36W of a standard deployment.
+    * Exemptions are made for inherently powered devices or devices that power the IntraBus device independent of bus power.
+
+### IntraBus Signals
+
+IntraBus signals must default to isolating the IntraBus device from the bus signals, and can only be connected when the power to the IntraBus device is activated and receiving power. 
+
+Signals from the bus to the IntraBus connector cannot be re-driven or otherwise modified by the host device, with the exception of passing through any bus isolators needed to comply with power-down safety. 
+
+The IntraBus device interacts with all bus signals (CAN, Interrupt, Access, etc.) the same as a normal ACS device, with the requirements and limitations thereof. 
+
+The total stub length on CAN signals used in IntraBus must be no more than 25 centimeters. 
+
+### IntraBus Plug Detection
+
+IntraBus devices have their Sag pin replaced with a IntraBus Detect pin. This pin is internally connected to ground in the IntraBus device. A host device can pull this pin up to detect the presence of an IntraBus device. 
