@@ -2,7 +2,7 @@
 
 All ACS devices use the same standard connection, implemented physically in a HD15 (High Density D-Subminiature 15 Pin) connector. Devices always have a female plug, and male-male straight-through cables are always used to interconnect devices. Cables must have a shield that fully extends between the two ends, and appropriate strain relief built into the connector head. While the standards do not specify a wire gauge or material, larger cables, such as 26AWG or 24AWG, are preferred and will permit the deployment to fully utilize the current a power provider is permitted to provide the deployment. See Amphenol *CS-DSDHD15MM0-005* as an example of an acceptable cable.
 
-**WARNING** : HD15 cables, connectors, plugs, etc. must not use blue plastic, to avoid confusion with a VGA video cable or connector. 
+**WARNING** : HD15 cables, connectors, plugs, etc. must not be colored blue in any way, to avoid confusion with a VGA video cable or connector. 
 
 ## Pinout
 
@@ -16,9 +16,9 @@ Main system ground, all signals and power are referenced to this potential. Must
 
 ### 7 : Voltage Sag Detect
 
-This pin is pulled to the Power rail inside each device with a nominally 1kΩ resistor. 
+The Sag pin is pulled up to 5 volts and down to ground with a 1k resistor inside each device.
 
-In its primary use-case, measurement of the voltage difference between this pin and the Power pin can be used to calculate the voltage drop of the interconnecting cable between devices. 
+The primary purpose of this pin is to monitor the current flow between devices, to watch for overcurrent events. See *Power Standards, Voltage Shift Detection* for more information.
 
 During enumeration, this signal is asserted low as a means of peer-to-peer chained communications, to determine bus integrity and enumeration ordering.
 
@@ -26,7 +26,7 @@ During enumeration, this signal is asserted low as a means of peer-to-peer chain
 
 Access is also known as the Deadman signal, it is a representation of the immediate, current state of any access-controlling Switches in the system.
 
-The Access signal is a 5v logic level, driven with a >20mA source/sink at the Core. No other device is permitted to drive this signal. Devices reading this signal may not source/sink more than 0.25mA into this connection.
+The Access signal is a 5v logic level, driven with a >20mA source/sink at the Gateway. No other device is permitted to drive this signal. Devices reading this signal may not source/sink more than 0.25mA into this connection.
 
 ### 3: CAN Low
 
@@ -44,11 +44,13 @@ This signal serves 3 primary purposes;
 * Inform devices of the current CAN frequency.
 * Shutdown all devices on the bus as needed.
 
-This signal is by default pulled to 5v by the Core with a 1kΩ resistor. Devices may also pull it up to 5v with no stronger than 100kΩ. If in this high state for more than 1 second, that means that the bus is in an idle state (may be enumerating, may be the Core is dead, etc.), and devices should enter an idle state as well.
+This pin is driven to a 5v logic level by the Gateway, and must be monitored by all devices.
 
-During regular system operation, this pin is a heartbeat, with a 50% duty cycle asserted by the Core. The frequency of the heartbeat correlates with bus frequency, so a device recovering from a power issue or similar knows what frequency to communicate. The bus frequency is 100,000x the heartbeat (i.e. a 400KHz bus is represented by a 4Hz heartbeat). 
+In normal operation, the Gateway will generate a square wave with a 50% +/- 10% duty cycle on this pin. Devices can determine the CAN bus frequency by the frequency of the Heartbeat, with a 1Hz heartbeat correlating to a 100KHz data rate, a 10Hz Heartbeat correlating to a 1MHz data rate, etc., permissible in increments of 50Khz. 
 
-If the signal remains low for greater than 1.5 seconds, devices must disconnect electrically from the bus and enter a shutdown state, until such a time as the pin returns to a logical high signal. This must be implemented in hardware and/or in a dedicated watchdog IC. This is used by the Core to trigger a restart and re-enumeration, or may be held low indefinitely to shutdown a system.
+The Heartbeat can also be used to suspend CAN bus operation. If the Gateway drives the pin with a duty cycle lower than 30%, devices should understand that to mean no CAN activity is permitted and put their CAN transceivers into a recessive state. There is no need to read the CAN bus when the Heartbeat pin indicates it suspended.  
+
+If the Gateway asserts the Heartbeat pin to 5v or ground for more than 1.5 seconds, all devices in the deployment should shut down their power systems. This functionality must be implemented using hardware exclusively, and not rely on code execution. See *Power Standard, System Commanded Shutdown* for more information. 
 
 ### 13 : Interrupt
 
@@ -66,7 +68,19 @@ The shield is connected to ground at the Core. All other devices cannot interact
 
 When a device is in a powered-off or hard shutdown state, it must electrically disconnect from all signals on the bus. This includes releasing the interrupt, if asserted. A device cannot connect to the bus unless its microcontroller or similar is properly executing code, and a hardware-generated power-good signal is asserted, such as from a regulator.
 
-Devices are permitted to draw an insignificant amount of power from the bus when in a powered-off or hard shutdown state for the purpose of maintaining any isolation circuitry.
+Devices are permitted to draw an insignificant amount of power from the bus when in a powered-off or hard shutdown state for the purpose of maintaining any isolation circuitry, or circuitry that ensures the device stays in a determinate, safe state during shutdown and startup.
+
+Devices are permitted to weakly load the Heartbeat pin, with no more than a 40kR connection, such that they do not shutdown if not connected to a Gateway. 
+
+## Ground Shift Consideration
+
+Due to the wired, distributed nature of an ACS deployment, it is not only possible but probable that the common ground reference will become offset across devices, a phenomenon known as ground shift. 
+
+For CAN, the ISO standard already calls out a voltage range of -2v to 7v common mode to allow for ground shifts. While this is acceptable, it is recommend to use a transceiver with an even greater rejection
+
+For digital signals, devices must be able to read any voltage between 3.1v and 7.1v relative to its local ground as a logical high. Voltages between -1.7v and 1.7v must be read as a logical low. 
+
+Ground shift considerations are not necessary on the sag pin, as it is designed to read such ground shifts.
 
 ## IntraBus Connection
 
@@ -88,21 +102,21 @@ There is no standard for what voltage(s) are provided to IntraBus devices, only 
 * The host device must be able to shut off all power going to the IntraBus device.
 * All power switching to the IntraBus device must happen at the high side, grounds are always connected.
 * The power providing circuitry for the IntraBus connector starts in the off position when the host is powered on. 
-* The host must monitor and limit current going to an IntraBus device.
+* The host must limit current going to an IntraBus device.
 * The IntraBus device drawing maximum current must not negatively impact the host device's regular operation. 
-* The combined current draw of the host device and the IntraBus device cannot exceed the maximum 36W of a standard deployment.
+* The combined current draw of the host device and the IntraBus device cannot exceed the maximum power rating of a standard device.
     * Exemptions are made for inherently powered devices or devices that power the IntraBus device independent of bus power.
 
 ### IntraBus Signals
 
-IntraBus signals must default to isolating the IntraBus device from the bus signals, and can only be connected when the power to the IntraBus device is activated and receiving power. 
+The IntraBus implementation must default to isolating the IntraBus device from the bus signals, and can only be connected when the power to the IntraBus device is activated and receiving power. This can be implemented on the host side, with all signals not present on the connector until power is applied, or on the device side, with the device not caring about or interfering with signals when unpowered.
 
 Signals from the bus to the IntraBus connector cannot be re-driven or otherwise modified by the host device, with the exception of passing through any bus isolators needed to comply with power-down safety. 
 
 The IntraBus device interacts with all bus signals (CAN, Interrupt, Access, etc.) the same as a normal ACS device, with the requirements and limitations thereof. 
 
-The total stub length on CAN signals used in IntraBus must be no more than 25 centimeters. 
+The total stub length on CAN signals used in IntraBus must be no more than 25 centimeters, including the length of any wire or cable connecting the host and the device. 
 
 ### IntraBus Plug Detection
 
-IntraBus devices have their Sag pin replaced with a IntraBus Detect pin. This pin is internally connected to ground in the IntraBus device. A host device can pull this pin up to detect the presence of an IntraBus device. 
+IntraBus devices have their Sag pin replaced with a IntraBus Detect pin. This pin is internally connected to ground in the IntraBus device. A host device must pull this pin up to detect the presence of an IntraBus device. 

@@ -25,7 +25,8 @@ All devices in an ACS deployment must serve one of the following topology roles;
 There are relatively few limits on a deployment;
 
 * No more than 62 devices across the deployment, including the Core and any Routers.
-* Cumulative cable lengths exceeding 20 feet on a branch may lead to degraded performance. 
+* Cumulative cable lengths exceeding 75 feet are not permitted on a single branch.
+* A deployment may only have one Gateway.
 
 Deployments are comprised of one or more *branches*. A branch is defined as a straight-line connection of devices, with an LT or OT on each end. A branch can also end at a Router, permitting multiple branches to join on a deployment. Routers can continuously be waterfalled to create infinite branches, so long as device counts are respected.
 

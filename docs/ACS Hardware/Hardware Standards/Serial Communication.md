@@ -18,7 +18,7 @@ The last bit is an acknowledgement bit, if set to 1 the recipient of the message
 
 On initialization, reset, etc., devices always connect to the bus at a baud rate of 100Kbps. After enumeration, the Core may define a new baud rate if all attached devices report they support it, using the *Can-Freq* message. 
 
-After sending the message, the Core will go to this new frequency and iterate through all addresses with the *Ack* message to ensure all devices made the change. If they did not, the Core will use *Can-Freq* to return to the original frequency. 
+After sending the message, the Core will adjust its Heartbeat frequency, go to this new frequency, and iterate through all addresses with the *Ack* message to ensure all devices made the change. If they did not, the Core will use *Can-Freq* to return to the original frequency, and revert the change to the Heartbeat.
 
 ## Message Definitions
 
