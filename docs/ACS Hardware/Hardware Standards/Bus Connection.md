@@ -72,11 +72,13 @@ Devices are permitted to draw an insignificant amount of power from the bus when
 
 Devices are permitted to weakly load the Heartbeat pin, with no more than a 40kR connection, such that they do not shutdown if not connected to a Gateway. 
 
+The sag pin's 1k pulldown to ground should always stay connected, and the 1k pullup to the unpowered 5v rail may remain connected. 
+
 ## Ground Shift Consideration
 
 Due to the wired, distributed nature of an ACS deployment, it is not only possible but probable that the common ground reference will become offset across devices, a phenomenon known as ground shift. 
 
-For CAN, the ISO standard already calls out a voltage range of -2v to 7v common mode to allow for ground shifts. While this is acceptable, it is recommend to use a transceiver with an even greater rejection
+For CAN, the ISO standard already calls out a voltage range of -2v to 7v common mode to allow for ground shifts. While this is acceptable, it is recommend to use a transceiver with an even greater rejection.
 
 For digital signals, devices must be able to read any voltage between 3.1v and 7.1v relative to its local ground as a logical high. Voltages between -1.7v and 1.7v must be read as a logical low. 
 
