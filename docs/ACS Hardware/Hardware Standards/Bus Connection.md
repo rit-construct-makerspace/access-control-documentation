@@ -66,7 +66,7 @@ The shield is connected to ground at the Core. All other devices cannot interact
 
 ## Bus Isolation
 
-When a device is in a powered-off or hard shutdown state, it must electrically disconnect from all signals on the bus. This includes releasing the interrupt, if asserted. A device cannot connect to the bus unless its microcontroller or similar is properly executing code, and a hardware-generated power-good signal is asserted, such as from a regulator.
+When a device is in a powered-off or hard shutdown state, it must electrically disconnect from all signals on the bus. This includes releasing the interrupt, if asserted. 
 
 Devices are permitted to draw an insignificant amount of power from the bus when in a powered-off or hard shutdown state for the purpose of maintaining any isolation circuitry, or circuitry that ensures the device stays in a determinate, safe state during shutdown and startup.
 
@@ -122,3 +122,11 @@ The total stub length on CAN signals used in IntraBus must be no more than 25 ce
 ### IntraBus Plug Detection
 
 IntraBus devices have their Sag pin replaced with a IntraBus Detect pin. This pin is internally connected to ground in the IntraBus device. A host device must pull this pin up to detect the presence of an IntraBus device. 
+
+## Router Re-Driving
+
+When a router splits the bus, it should re-drive all signals to the new branch, to minimize extreme ground shift and voltage sag on very large deployments with lots of branches.
+
+For CAN, this is simply achieved by receiving messages on one transceiver, and re-transmitting them on another. Routers may re-transmit all messages across all branches, but is preferred if the Router keeps track of what devices are on what branch, and only routes pertinent messages down that branch to reduce congestion. 
+
+For digital signals originating at the Gateway, the Router must re-drive the signals using a hardware-only approach, such that a misbehaving microcontroller does not interrupt signals. 

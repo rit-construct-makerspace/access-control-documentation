@@ -63,3 +63,13 @@ The implications of this shift on bus signals is already covered in *Bus Connect
 In the least-ideal deployment possible, all power providers are on one side of a very long cable from all the power consumers on the other side. There would be a significant amount of current going through the one device in the center, 
 
 ## System Commanded Shutdown
+
+To reduce power consumption or deal with a potentially locked-up device, the Gateway has the ability to command all other devices to shut down via the Heartbeat/Shutdown pin. See *Bus Connection, Heartbeat/Shutdown* for more information. A shutdown is commanded by the Gateway driving this pin to a high or low state for more than 1.5 seconds. The implementation of this shutdown signal must be 100% handled in hardware, such that code lock-up can be fixed via a forced power cycle. 
+
+1.5 seconds was chosen so a standard hardware watchdog with a 1.6 second timer can be used to implement the needed logic. This watchdog should be wired to shut down and hold shut down power switching circuitry that disconnects the device's electronics from their respective power rails, or shuts down regulators. 
+
+All code-executing and user-activated aspects of the device must go into a dormant, power-off state when commanded to shutdown, as if the device is performing a power-on reset. This includes shutting down any IntraBus devices, if attached.
+
+Devices are permitted to omit some of their circuitry from a system commanded shutdown to ensure proper isolation from the bus, which can still have signals on it in the shutdown state. 
+
+Devices that supply power to the bus must continue to provide power during a shutdown.
