@@ -46,7 +46,7 @@ Power providers must be able to monitor the current going to the bus with an acc
 
 Power consumers must connect to bus voltage via a switched current-limiting connection, See *Bus Connection, Heartbeat/Shutdown* for more information.
 
-Power consumers must have minimum communication functionality any time bus voltage exceeds 7.5 volts, although they are not required to fully operate at that low a voltage level if they are not capable of doing so. For example, a signal relay switch must begin monitoring CAN and other bus signals once the voltage rises to 7.5v, but can require a voltage greater than 14 volts to energize its relay coils.
+Power consumers must have minimum communication functionality any time bus voltage exceeds 12 volts, although they are not required to fully operate at that low a voltage level if they are not capable of doing so. For example, a signal relay switch must begin monitoring CAN and other bus signals once the voltage rises to 12v, but can require a voltage greater than 18 volts to energize its relay coils.
 
 Power consumers must operate normally if their input voltage is between 22 and 27 volts, and must be able to survive a continuous 28 volts on their input.
 
