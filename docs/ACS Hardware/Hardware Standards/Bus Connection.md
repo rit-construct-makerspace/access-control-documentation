@@ -1,132 +1,163 @@
 # Bus Connection
 
-All ACS devices use the same standard connection, implemented physically in a HD15 (High Density D-Subminiature 15 Pin) connector. Devices always have a female plug, and male-male straight-through cables are always used to interconnect devices. Cables must have a shield that fully extends between the two ends, and appropriate strain relief built into the connector head. While the standards do not specify a wire gauge or material, larger cables, such as 26AWG or 24AWG, are preferred and will permit the deployment to fully utilize the current a power provider is permitted to provide the deployment. See Amphenol *CS-DSDHD15MM0-005* as an example of an acceptable cable.
+All ACS devices use a standard connection. Devices always have a female plug, and male-male straight-through cables are always used to interconnect devices. Cables must have a shield that fully extends between the two ends, and appropriate strain relief built into the connector head. While the standards do not specify a wire gauge or material, larger cables, such as 26AWG or 24AWG, are preferred and will permit the deployment to fully utilize the current a power provider is permitted to provide the deployment. 
+
+## Standard Interface Pinout
+
+The standard interface uses a HD15 (High Density D-Subminiature 15 Pin) connector. See Amphenol *CS-DSDHD15MM0-005* as an example of an acceptable cable.
 
 **WARNING** : HD15 cables, connectors, plugs, etc. must not be colored blue in any way, to avoid confusion with a VGA video cable or connector. 
 
-## Pinout
+### 1: Access
 
-### 1, 2, 6, 11 : Power
+Push-pull 5v signal from Core, >20mA drive strength. Used to indicate to devices on the deployment if they should be active or not. 
 
-Main system power rail. Must be connected to other power pins as soon as possible within the device.
+### 2: OneWire
 
-### 5, 9, 10, 14, 15 : Ground
+Shared data bus to identify devices in a deployment, read temperature of devices, etc. 
 
-Main system ground, all signals and power are referenced to this potential. Must be connected to other ground pins as soon as possible within the device.
+See [OneWire](#onewire) below for more information.
 
-### 7 : Voltage Sag Detect
+### 3, 10, 14: Ground
 
-The Sag pin is pulled up to 5 volts and down to ground with a 1k resistor inside each device.
+System ground, reference for all power and data. 
 
-The primary purpose of this pin is to monitor the current flow between devices, to watch for overcurrent events. See *Power Standards, Voltage Shift Detection* for more information.
+### 4, 5: +12v Rail
 
-During enumeration, this signal is asserted low as a means of peer-to-peer chained communications, to determine bus integrity and enumeration ordering.
+Nominal 12v power rail.
 
-### 12 : Access
+See [Power Standards](./Power%20Standard.md) for more information.
 
-Access is also known as the Deadman signal, it is a representation of the immediate, current state of any access-controlling Switches in the system.
+### 6, 13: +5v Rail
 
-The Access signal is a 5v logic level, driven with a >20mA source/sink at the Gateway. No other device is permitted to drive this signal. Devices reading this signal may not source/sink more than 0.25mA into this connection.
+Nominal 5v power rail.
 
-### 3: CAN Low
+See [Power Standards](./Power%20Standard.md) for more information.
 
-Negative side of CAN differential pair.
+### 7: Interrupt
 
-### 8 : CAN High
+Open-drain interrupt signal, active low. Pulled to 5v by Core. Must be asserted low >5mA drive strength. 
 
-Positive side of CAN differential pair.
+A low signal on this line indicates to the Core that a device is not in a safe/proper operating state, and the deployment should not be activated. 
 
-### 4: Heartbeat/Shutdown
+### 8: Bus GPIO 1
 
-This signal serves 3 primary purposes;
+Application-specific input/output #1. 
 
-* Inform devices if the bus is active/suspended.
-* Inform devices of the current CAN frequency.
-* Shutdown all devices on the bus as needed.
+See [Bus GPIO](#bus-gpio) below for more information.
 
-This pin is driven to a 5v logic level by the Gateway, and must be monitored by all devices.
+### 9: Bus GPIO 2
 
-In normal operation, the Gateway will generate a square wave with a 50% +/- 10% duty cycle on this pin. Devices can determine the CAN bus frequency by the frequency of the Heartbeat, with a 1Hz heartbeat correlating to a 100KHz data rate, a 10Hz Heartbeat correlating to a 1MHz data rate, etc., permissible in increments of 50Khz. 
+Application-specific input/output #2. 
 
-The Heartbeat can also be used to suspend CAN bus operation. If the Gateway drives the pin with a duty cycle lower than 30%, devices should understand that to mean no CAN activity is permitted and put their CAN transceivers into a recessive state. There is no need to read the CAN bus when the Heartbeat pin indicates it suspended.  
+See [Bus GPIO](#bus-gpio) below for more information.
 
-If the Gateway asserts the Heartbeat pin to 5v or ground for more than 1.5 seconds, all devices in the deployment should shut down their power systems. This functionality must be implemented using hardware exclusively, and not rely on code execution. See *Power Standard, System Commanded Shutdown* for more information. 
+### 12: Bus GPIO 3
 
-### 13 : Interrupt
+Application-specific input/output #3. 
 
-Open-drain line that can be used by non-Core devices to notify the Core and all other devices of an urgent communication. This line is pulled up to 5v by the Core, with a nominally 1kΩ resistor. Devices must assert the interrupt low with a >20mA sink to ground. Devices may not add appreciable current to this pin when not interrupting. 
+See [Bus GPIO](#bus-gpio) below for more information.
 
-All devices are required to implement the interrupt line. Devices must immediately cease all communication if the interrupt is asserted and they are not the device that asserted it. Only the Core and the interrupting device may begin communications when an interrupt is asserted. The Core may also assert interrupt to cease all communication activity.
+### 15: Bus GPIO 4
 
-When in an interrupted state, a device is still expected to respond to and/or act on any messages it receives specifically addressed to it.
+Application-specific input/output #4. 
 
-### Shield
+See [Bus GPIO](#bus-gpio) below for more information.
 
-The shield is connected to ground at the Core. All other devices cannot interact with the shield. Devices with multiple DE-9 connections must connect all shields together. 
+## Reduced Interface Pinout
 
-## Bus Isolation
+For backwards-compatibility with ACS V2.X switches, and to permit non-Core devices with simpler interfaces, a reduced interface is also defined. THis interface uses the more common DB9 connector, with the following pinout;
 
-When a device is in a powered-off or hard shutdown state, it must electrically disconnect from all signals on the bus. This includes releasing the interrupt, if asserted. 
+### 1: Access
 
-Devices are permitted to draw an insignificant amount of power from the bus when in a powered-off or hard shutdown state for the purpose of maintaining any isolation circuitry, or circuitry that ensures the device stays in a determinate, safe state during shutdown and startup.
+5v logic level push-pull signal, driven by the Core >20mA drive strength. Active high indicates the device should be unlocked/activated/etc. 
 
-Devices are permitted to weakly load the Heartbeat pin, with no more than a 40kR connection, such that they do not shutdown if not connected to a Gateway. 
+### 2: OneWire
 
-The sag pin's 1k pulldown to ground should always stay connected, and the 1k pullup to the unpowered 5v rail may remain connected. 
+Shared data bus used to identify devices on the bus. Also allows temperature monitoring of devices. See [OneWire](#onewire) below for more information.
 
-## Ground Shift Consideration
+### 3, 5, 9: Ground
 
-Due to the wired, distributed nature of an ACS deployment, it is not only possible but probable that the common ground reference will become offset across devices, a phenomenon known as ground shift. 
+Ground reference for all power and signals. 
 
-For CAN, the ISO standard already calls out a voltage range of -2v to 7v common mode to allow for ground shifts. While this is acceptable, it is recommend to use a transceiver with an even greater rejection.
+Pin 9 is not used on V2.X hardware (was reserved for future use). 
 
-For digital signals, devices must be able to read any voltage between 3.1v and 7.1v relative to its local ground as a logical high. Voltages between -1.7v and 1.7v must be read as a logical low. 
+### 4, 6: +5V Power
 
-Ground shift considerations are not necessary on the sag pin, as it is designed to read such ground shifts.
+Main system power, 5v nominal. Devices supplying power must connect via an ideal diode and some sort of overcurrent protection. 
 
-## IntraBus Connection
+On V2.X hardware, pin 6 is "Type", which has a resistor to ground. Connecting this to the bus's 5v will be insignificant, but it does mean that V2.X devices will have more of a voltage drop than V3.X devices using the reduced interface. This is on top of the significant >500mV drop from the Schottky diode found in V2.X devices on the 5v pin.
 
-Some devices may want to optionally extend the bus signals to other connected devices in a standard, modular way. This can be achieved with IntraBus. 
+### 7: Interrupt
 
-*NOTE: IntraBus must only be followed when passing signals directly from the bus, and does not apply to generic modular devices.*
+Open-drain input to the Core, must be pulled low >10mA drive strength, pulled up at the Core. If any device pulls it low, this indicates the system is not in a safe/normal operating state.
 
-The IntraBus standard defines how a bus-connected device, known as the "host", may extend bus signals through a per-device standardized interface, to allow for more complex add-ons without the complexity of an entire additional bus-attached device. 
+### 8: Unused
 
-A host device may have any number of IntraBus devices, but each IntraBus device needs an independent connector, power and signal switching, etc.. IntraBus devices cannot be daisy-chained.
+This pin is unused in the reduced pinout. It must be left floating and is reserved for future use.
 
-IntraBus connections are at the discretion of design engineers for each device, there is no physical connector standardization for the IntraBus. 
+## Adapting Reduced and Standard Interfaces
 
-### IntraBus Power
+The pinput of the standard and reduced interfaces were chosen specifically so that they could be adapted using off-the-shelf HD15 to DB9 adapters, intended for video signals, that have the following pinout; 
 
-There is no standard for what voltage(s) are provided to IntraBus devices, only that;
+* DB9 (Pin) - HD15 (Pin)
+* 1 (Access) - 1 (Access)
+* 2 (OneWire) - 2 (OneWire)
+* 3 (Ground) - 3 (Ground)
+* 4 (Power) - 13 (+5V)
+* 5 (Ground) - Not Connected
+* 6 (V2.X: Type/Unused, V3.X: +5V) - 6 (+5V)
+* 7 (Interrupt) - 7 (Interrupt)
+* 8 (Unused) - Not Connected
+* 9 (V2.X: Unused, V3.X: Ground) - 10, 11 (Ground)
 
-* All power for the IntraBus device comes from the host device. 
-* The host device must be able to shut off all power going to the IntraBus device.
-* All power switching to the IntraBus device must happen at the high side, grounds are always connected.
-* The power providing circuitry for the IntraBus connector starts in the off position when the host is powered on. 
-* The host must limit current going to an IntraBus device.
-* The IntraBus device drawing maximum current must not negatively impact the host device's regular operation. 
-* The combined current draw of the host device and the IntraBus device cannot exceed the maximum power rating of a standard device.
-    * Exemptions are made for inherently powered devices or devices that power the IntraBus device independent of bus power.
+## OneWire
 
-### IntraBus Signals
+Every ACS device except for the Core must implement a OneWire slave device that serves 2 purposes;
 
-The IntraBus implementation must default to isolating the IntraBus device from the bus signals, and can only be connected when the power to the IntraBus device is activated and receiving power. This can be implemented on the host side, with all signals not present on the connector until power is applied, or on the device side, with the device not caring about or interfering with signals when unpowered.
+* Allow for monitoring of temperatures deployment-wide. 
+* Uniquely and type-wise identify the device
 
-Signals from the bus to the IntraBus connector cannot be re-driven or otherwise modified by the host device, with the exception of passing through any bus isolators needed to comply with power-down safety. 
+The specification does permit for the OneWire bus to be used for other more complex uses, so long as the 2 above requirement are satisfied, and that there is only one OneWire slave per ACS device. 
 
-The IntraBus device interacts with all bus signals (CAN, Interrupt, Access, etc.) the same as a normal ACS device, with the requirements and limitations thereof. 
+The standard mandates that OneWire devices are powered by the dployment's 5v rail, versus using the parasitic power of the OneWire bus itself. So a OneWire IC with an independent power pin must be used.
 
-The total stub length on CAN signals used in IntraBus must be no more than 25 centimeters, including the length of any wire or cable connecting the host and the device. 
+For temperature monitoring, ACS devices must implement the standard temperature monitoring (resolution, conversion time, commands, high threshold) found in a DS18B20Z temperature sensor. The Core must monitor the temperature of each device no less frequently than once every 10 seconds. Additionally, the Core must monitor for an alarm at least 2 times per second. The high temperature alarm threshold must be set to 50C by default, with higher levels permitted based on the specifics of that device, once it has been type identified as described below. 
 
-### IntraBus Plug Detection
+All OneWire devices have a globally unique 48 bit address with an 8 bit "family code" (intended use of the OneWire debice). This 64 bit address is the unique identifier of an ACS device, and should be used for any situations that require specific identification of a device (i.e. like a serial number).
 
-IntraBus devices have their Sag pin replaced with a IntraBus Detect pin. This pin is internally connected to ground in the IntraBus device. A host device must pull this pin up to detect the presence of an IntraBus device. 
+The Core must monitor for deployment integrity via the OneWire bus, searching for all expected addresses at least once every 30 seconds. If a device that is expected to be present fails to respond, the deployment should go into a fault state.
 
-## Router Re-Driving
+The default, suggested implementation of these requirements is to use a UMW DS18B20Z or comparable. Notably, the UMW and other DS18B20Zs improve on the original Dallas device by providing bytes 6 and 7 as end-use EEPROM. 
 
-When a router splits the bus, it should re-drive all signals to the new branch, to minimize extreme ground shift and voltage sag on very large deployments with lots of branches.
+These 2 bytes are used in conjunction with byte 3 (Low Temperature Alarm Threshold) to identify the type of debice attached. The following describes the schema: 
 
-For CAN, this is simply achieved by receiving messages on one transceiver, and re-transmitting them on another. Routers may re-transmit all messages across all branches, but is preferred if the Router keeps track of what devices are on what branch, and only routes pertinent messages down that branch to reduce congestion. 
+### Byte 3:
 
-For digital signals originating at the Gateway, the Router must re-drive the signals using a hardware-only approach, such that a misbehaving microcontroller does not interrupt signals. 
+* Bit 7 and 6: Always 1. This effectively disables the low temperature threshold (setting it as -128C, far below when the device would stop working)
+
+* Bit 5, 4, and 3: Device Mode. These bits represent if the device is a switch or not, if a switch, if intended to be operated in ganged or independent mode, and if independent, how many channels there are. See [Bus GPIO](#bus-gpio) below for more information. 
+
+    * 000: Switch Independent, 4 channels
+    * 001: Switch Independent, 3 channels
+    * 010: Switch Independent, 2 channels
+    * 011: Switch Ganged operation (Switched only using access signal)
+    * 100: Bidirectional GPIO device. Makes use of the GPIO as outputs and inputs, in some application-specific way that is defined by the type of device specifically.
+    * 101: Passive Device (No [Bus GPIO](#bus-gpio), switching, interrupt, etc.). Such as a power injector.
+    * 110: Interruptor Device (No [Bus GPIO](#bus-gpio), switching, etc.) but can generate interrupts.
+    * 111: Communicative Device. This device will use the GPIO as a communication interface (SPI, UART, etc.) to the Core for very complex devices. See [Communicative Device](#communicative-device) for more information.
+
+* Bit 2, 1, and 0: Device Type MSB. See below for more information.
+
+### Bytes 6 and 7
+
+Bytes 6 and 7, along with the 3 LSBs of Byte 3, make up the type identifier for a device. Devices are given identifiers sequentially as they are produced, with minor hardware changes that do not impact end-use being wrapped under the same type ID. For instance, if the USB Hub Switch V3.0.0 has a USB-B port, and V3.0.1 swaps that for a USB Micro-B port, the end-use of the Switch itself did not change. But, changing from a USB-B port to a higher-current-capable USB-C port is a change to the hardware's function (can provide the deployment with more power), that would get a new ID.
+
+### Communicative Device
+
+OneWire is meant as a way for debices to be able to communicate what they are, without the complexity of a microcontroller or similar. But, if a device is already implementing a better communication interface, it makes more sense to just use that. As such, if a device has mode ID 111, the 19-bit type identifier is instead used to convey what better communication interface to use, and then all information about the device is attained over that.
+
+
+
+## Bus GPIO
+
