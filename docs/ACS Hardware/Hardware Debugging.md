@@ -1,4 +1,4 @@
-# Hardware Troubleshooting
+# Hardware Debugging
 
 Click on a symptom below to expand the section and see diagnostic and rectifying steps.
 

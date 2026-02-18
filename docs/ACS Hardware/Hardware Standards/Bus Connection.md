@@ -138,24 +138,28 @@ These 2 bytes are used in conjunction with byte 3 (Low Temperature Alarm Thresho
 
 * Bit 5, 4, and 3: Device Mode. These bits represent if the device is a switch or not, if a switch, if intended to be operated in ganged or independent mode, and if independent, how many channels there are. See [Bus GPIO](#bus-gpio) below for more information. 
 
-    * 000: Switch Independent, 4 channels
-    * 001: Switch Independent, 3 channels
-    * 010: Switch Independent, 2 channels
-    * 011: Switch Ganged operation (Switched only using access signal)
-    * 100: Bidirectional GPIO device. Makes use of the GPIO as outputs and inputs, in some application-specific way that is defined by the type of device specifically.
-    * 101: Passive Device (No [Bus GPIO](#bus-gpio), switching, interrupt, etc.). Such as a power injector.
-    * 110: Interruptor Device (No [Bus GPIO](#bus-gpio), switching, etc.) but can generate interrupts.
+    * 000: (Reserved for Future Use)
+    * 001: Switch 1 Channel (Switched only using access signal)
+    * 010: Switch 2 Channels (GPIO 1/2)
+    * 011: Switch 3 Channels (GPIO 1/2/3)
+    * 100: Switch 4 Channels (GPIO 1/2/3/4)
+    * 101: Non-Switching Device: May generate interrupts, but doesn't use bus GPIO. 
+    * 110: (Reserved for Future Use)
     * 111: Communicative Device. This device will use the GPIO as a communication interface (SPI, UART, etc.) to the Core for very complex devices. See [Communicative Device](#communicative-device) for more information.
 
 * Bit 2, 1, and 0: Device Type MSB. See below for more information.
 
 ### Bytes 6 and 7
 
-Bytes 6 and 7, along with the 3 LSBs of Byte 3, make up the type identifier for a device. Devices are given identifiers sequentially as they are produced, with minor hardware changes that do not impact end-use being wrapped under the same type ID. For instance, if the USB Hub Switch V3.0.0 has a USB-B port, and V3.0.1 swaps that for a USB Micro-B port, the end-use of the Switch itself did not change. But, changing from a USB-B port to a higher-current-capable USB-C port is a change to the hardware's function (can provide the deployment with more power), that would get a new ID.
+Bytes 6 and 7, along with the 3 LSBs of Byte 3, make up the type identifier for a device. Devices are given identifiers sequentially as they are produced, with minor hardware changes that do not impact end-use being wrapped under the same type ID. 
+
+Hardware IDs are cataloged in the [Access Control Component Table GitHub](https://github.com/rit-construct-makerspace/access-control-component-table). 
 
 ### Communicative Device
 
 OneWire is meant as a way for devices to be able to communicate what they are, without the complexity of a microcontroller or similar. But, if a device is already implementing a better communication interface, it makes more sense to just use that. As such, if a device has mode ID 111, the 19-bit type identifier is instead used to convey what better communication interface to use, and then all information about the device is attained over that.
+
+
 
 ## Bus GPIO
 
