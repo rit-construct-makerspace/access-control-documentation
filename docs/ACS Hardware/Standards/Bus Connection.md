@@ -155,9 +155,7 @@ Bytes 6 and 7, along with the 3 LSBs of Byte 3, make up the type identifier for 
 
 ### Communicative Device
 
-OneWire is meant as a way for debices to be able to communicate what they are, without the complexity of a microcontroller or similar. But, if a device is already implementing a better communication interface, it makes more sense to just use that. As such, if a device has mode ID 111, the 19-bit type identifier is instead used to convey what better communication interface to use, and then all information about the device is attained over that.
-
-
+OneWire is meant as a way for devices to be able to communicate what they are, without the complexity of a microcontroller or similar. But, if a device is already implementing a better communication interface, it makes more sense to just use that. As such, if a device has mode ID 111, the 19-bit type identifier is instead used to convey what better communication interface to use, and then all information about the device is attained over that.
 
 ## Bus GPIO
 
