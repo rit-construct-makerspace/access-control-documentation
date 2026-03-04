@@ -144,7 +144,7 @@ These 2 bytes are used in conjunction with byte 3 (Low Temperature Alarm Thresho
     * 011: Switch 3 Channels (GPIO 1/2/3)
     * 100: Switch 4 Channels (GPIO 1/2/3/4)
     * 101: Non-Switching Device: May generate interrupts, but doesn't use bus GPIO. 
-    * 110: (Reserved for Future Use)
+    * 110: HMI device connected on an internal bus to the Core.
     * 111: Communicative Device. This device will use the GPIO as a communication interface (SPI, UART, etc.) to the Core for very complex devices. See [Communicative Device](#communicative-device) for more information.
 
 * Bit 2, 1, and 0: Device Type MSB. See below for more information.
