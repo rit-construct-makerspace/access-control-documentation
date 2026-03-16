@@ -138,14 +138,14 @@ These 2 bytes are used in conjunction with byte 3 (Low Temperature Alarm Thresho
 
 * Bit 5, 4, and 3: Device Mode. These bits represent if the device is a switch or not, if a switch, if intended to be operated in ganged or independent mode, and if independent, how many channels there are. See [Bus GPIO](#bus-gpio) below for more information. 
 
-    * 000: (Reserved for Future Use)
-    * 001: Switch 1 Channel (Switched only using access signal)
-    * 010: Switch 2 Channels (GPIO 1/2)
-    * 011: Switch 3 Channels (GPIO 1/2/3)
-    * 100: Switch 4 Channels (GPIO 1/2/3/4)
-    * 101: Non-Switching Device: May generate interrupts, but doesn't use bus GPIO. 
-    * 110: HMI device connected on an internal bus to the Core.
-    * 111: Communicative Device. This device will use the GPIO as a communication interface (SPI, UART, etc.) to the Core for very complex devices. See [Communicative Device](#communicative-device) for more information.
+    * 000 (0): (Reserved for Future Use)
+    * 001 (1): Switch 1 Channel (Switched only using access signal)
+    * 010 (2): Switch 2 Channels (GPIO 1/2)
+    * 011 (3): Switch 3 Channels (GPIO 1/2/3)
+    * 100 (4): Switch 4 Channels (GPIO 1/2/3/4)
+    * 101 (5): Non-Switching Device: May generate interrupts, but doesn't use bus GPIO. 
+    * 110 (6): HMI device connected on an internal bus to the Core.
+    * 111 (7): Communicative Device. This device will use the GPIO as a communication interface (SPI, UART, etc.) to the Core for very complex devices. See [Communicative Device](#communicative-device) for more information.
 
 * Bit 2, 1, and 0: Device Type MSB. See below for more information.
 
