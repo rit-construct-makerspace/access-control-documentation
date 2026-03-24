@@ -134,7 +134,7 @@ These 2 bytes are used in conjunction with byte 3 (Low Temperature Alarm Thresho
 
 ### Byte 3:
 
-* Bit 7 and 6: Always 1. This effectively disables the low temperature threshold (setting it as -128C, far below when the device would stop working)
+* Bit 7 and 6: Always 0. This effectively disables the low temperature threshold (setting it as -128C, far below when the device would stop working)
 
 * Bit 5, 4, and 3: Device Mode. These bits represent if the device is a switch or not, if a switch, if intended to be operated in ganged or independent mode, and if independent, how many channels there are. See [Bus GPIO](#bus-gpio) below for more information. 
 
